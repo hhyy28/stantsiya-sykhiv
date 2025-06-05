@@ -12,9 +12,11 @@ namespace StantsiyaSykhivApi.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            // Configure the database character set
             migrationBuilder.AlterDatabase()
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            // Create the 'Users' table
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
@@ -34,6 +36,7 @@ namespace StantsiyaSykhivApi.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            // Create the 'Projects' table with a foreign key to 'Users'
             migrationBuilder.CreateTable(
                 name: "Projects",
                 columns: table => new
@@ -54,10 +57,11 @@ namespace StantsiyaSykhivApi.Migrations
                         column: x => x.OwnerId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Cascade); // Cascade delete for owner
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            // Create the 'Boards' table with a foreign key to 'Projects'
             migrationBuilder.CreateTable(
                 name: "Boards",
                 columns: table => new
@@ -76,10 +80,11 @@ namespace StantsiyaSykhivApi.Migrations
                         column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Cascade); // Cascade delete for project
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            // Create the 'Tasks' table with foreign keys to 'Projects' and 'Users'
             migrationBuilder.CreateTable(
                 name: "Tasks",
                 columns: table => new
@@ -92,7 +97,7 @@ namespace StantsiyaSykhivApi.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StartDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     EndDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    Status = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false), // Assuming Status is an enum or int
                     ProjectId = table.Column<int>(type: "int", nullable: false),
                     AssigneeId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -104,15 +109,17 @@ namespace StantsiyaSykhivApi.Migrations
                         column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Cascade); // Cascade delete for project
                     table.ForeignKey(
                         name: "FK_Tasks_Users_AssigneeId",
                         column: x => x.AssigneeId,
                         principalTable: "Users",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull); // Set NULL on delete for assignee
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            // Create the 'Columns' table with a foreign key to 'Boards'
             migrationBuilder.CreateTable(
                 name: "Columns",
                 columns: table => new
@@ -132,10 +139,11 @@ namespace StantsiyaSykhivApi.Migrations
                         column: x => x.BoardId,
                         principalTable: "Boards",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Cascade); // Cascade delete for board
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            // Create the 'Comments' table with foreign keys to 'Tasks' and 'Users'
             migrationBuilder.CreateTable(
                 name: "Comments",
                 columns: table => new
@@ -156,16 +164,17 @@ namespace StantsiyaSykhivApi.Migrations
                         column: x => x.TaskId,
                         principalTable: "Tasks",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Cascade); // Cascade delete for task
                     table.ForeignKey(
                         name: "FK_Comments_Users_AuthorId",
                         column: x => x.AuthorId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Cascade); // Cascade delete for author
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            // Create the 'TaskColumnLinks' join table with composite primary key and foreign keys
             migrationBuilder.CreateTable(
                 name: "TaskColumnLinks",
                 columns: table => new
@@ -181,16 +190,17 @@ namespace StantsiyaSykhivApi.Migrations
                         column: x => x.ColumnId,
                         principalTable: "Columns",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Cascade); // Cascade delete for column
                     table.ForeignKey(
                         name: "FK_TaskColumnLinks_Tasks_TaskId",
                         column: x => x.TaskId,
                         principalTable: "Tasks",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Cascade); // Cascade delete for task
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            // Create indexes for foreign keys and common lookup columns
             migrationBuilder.CreateIndex(
                 name: "IX_Boards_ProjectId",
                 table: "Boards",
@@ -235,6 +245,7 @@ namespace StantsiyaSykhivApi.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            // Drop tables in reverse order of creation to respect foreign key constraints
             migrationBuilder.DropTable(
                 name: "Comments");
 
