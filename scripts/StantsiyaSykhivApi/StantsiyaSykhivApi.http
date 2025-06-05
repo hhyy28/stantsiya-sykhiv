@@ -1,0 +1,6 @@
+@StantsiyaSykhivApi_HostAddress = http://localhost:3306
+
+GET {{StantsiyaSykhivApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

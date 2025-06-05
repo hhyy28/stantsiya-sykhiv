@@ -1,0 +1,1201 @@
+<!DOCTYPE HTML>
+<html lang="uk" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Станція Сихів</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Станція Сихів</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="Виконали"><a class="header" href="#Виконали">Виконали</a></h1>
+<p><em>Студенти 2-го курсу, групи ІО-33:</em><br />
+<strong>Поліщук Мирослав (лідер команди)</strong><br />
+<strong>Чекун Микола</strong><br />
+<strong>Рокицький Олександр</strong><br />
+<strong>Бурденюк Дмитро</strong><br />
+<strong>Скубко Артем</strong><br />
+<strong>Шусторович Марк</strong><br />
+<strong>Лісовський Назар</strong></p>
+<p>Телеграм: <a href="https://t.me/myroslav11">Поліщук Мирослав</a></p>
+<h1 id="Керівник"><a class="header" href="#Керівник">Керівник</a></h1>
+<p><em>доцент кафедри ОТ ФІОТ, к.т.н., доцент</em> <a href="https://t.me/a_boldak"><strong>Андрій БОЛДАК</strong></a></p>
+<p><a href="https://kpi.ua/">НТУУ "КИЇВСЬКИЙ ПОЛІТЕХНІЧНИЙ ІНСТИТУТ імені ІГОРЯ СІКОРСЬКОГО</a></p>
+<p><a href="https://fiot.kpi.ua/">Факультет інформатики та обчислювальної техніки</a></p>
+<p><a href="https://comsys.kpi.ua/">Кафедра обчислювальної техніки</a></p>
+<p>Київ</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Вступ"><a class="header" href="#Вступ">Вступ</a></h1>
+<p><strong>Stantsiya Sykhiv (SS)</strong> – це легка у використанні та багатофункціональна система для управління проєктами з інтеграцією систем контролю версій. Розробка платформи спрямована на створення інтуїтивного інструменту, що поєднує простоту застосування з передовими технологічними рішеннями для ефективного планування, координації та контролю реалізації проєктів.</p>
+<p><strong>Мета проєкту</strong> - розробити універсальне рішення для організації спільної роботи над проєктами, яке забезпечує інтеграцію з провідними системами контролю версій, сприяє автоматизації процесів розробки, відслідковуванню змін та покращенню командної взаємодії.</p>
+<p>Сучасні рішення, такі як GitHub Projects, Trello, Jira та Backlog, демонструють високий рівень функціональності, однак часто мають обмеження щодо гнучкості та масштабованості. <strong>Stantsiya Sykhiv (SS)</strong> інтегрує передові технічні підходи та відкриту архітектуру, що дозволяє ефективно взаємодіяти з іншими системами управління та забезпечує конкурентні переваги на ринку.</p>
+<p><strong>Основні технічні характеристики:</strong></p>
+<ul>
+<li><strong>Реляційна база даних:</strong> ефективне зберігання та обробка інформації.</li>
+<li><strong>RESTful API:</strong> забезпечення надійної інтеграції з іншими сервісами.</li>
+<li><strong>Модульна архітектура:</strong> гнучкість та можливість розширення функціоналу.</li>
+<li><strong>Підтримка систем контролю версій:</strong> інтеграція з Git для відслідковування змін та покращення співпраці в команді.</li>
+</ul>
+<p><strong>Очікуваний технічно-економічний ефект:</strong></p>
+<ul>
+<li>Створення стабільного, масштабованого продукту з високим рівнем надійсності.</li>
+<li>Залучення широкої аудиторії завдяки інтуїтивному інтерфейсу та широкому функціоналу.</li>
+<li>Оптимізація робочих процесів та взаємодії команди через ефективний контроль версій.</li>
+<li>Підвищення інвестиційної привабливості проєкту завдяки співпраці та комунікації.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Розроблення-загальних-вимог-до-системи"><a class="header" href="#Розроблення-загальних-вимог-до-системи">Розроблення загальних вимог до системи</a></h1>
+<ul>
+<li><a href="docs/./state-of-the-art.html">Аналіз предметної області</a></li>
+<li><a href="docs/./stakeholders-needs.html">Запити зацікавлених осіб</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Аналіз-предметної-області"><a class="header" href="#Аналіз-предметної-області">Аналіз предметної області</a></h1>
+<h2 id="Вступ-1"><a class="header" href="#Вступ-1">Вступ</a></h2>
+<p>Цей розділ присвячений аналізу предметної області для розробки системи управління проєктами Stantsiya Sykhiv. У ньому розглядаються основні поняття, аналізується життєвий цикл програмного забезпечення, а також проводиться порівняння різних методологій розробки та існуючих рішень у сфері управління проєктами.</p>
+<p>Основна мета дослідження – виявити недоліки та обмеження наявних систем, щоб визначити потенційні можливості для вдосконалення. Це дозволить створити конкурентоспроможний продукт із унікальними перевагами, що відповідає сучасним вимогам ринку.</p>
+<h2 id="Зміст"><a class="header" href="#Зміст">Зміст</a></h2>
+<ul>
+<li><a href="docs/state-of-the-art.html#%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%96-%D0%B2%D0%B8%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%BD%D1%8F">Основні визначення</a></li>
+<li><a href="docs/state-of-the-art.html#%D0%9F%D1%96%D0%B4%D1%85%D0%BE%D0%B4%D0%B8-%D1%82%D0%B0-%D1%81%D0%BF%D0%BE%D1%81%D0%BE%D0%B1%D0%B8-%D0%B2%D0%B8%D1%80%D1%96%D1%88%D0%B5%D0%BD%D0%BD%D1%8F-%D0%B7%D0%B0%D0%B2%D0%B4%D0%B0%D0%BD%D0%BD%D1%8C">Підходи та способи вирішення завдань</a></li>
+<li><a href="docs/state-of-the-art.html#%D0%9F%D0%BE%D1%80%D1%96%D0%B2%D0%BD%D1%8F%D0%BB%D1%8C%D0%BD%D0%B0-%D1%85%D0%B0%D1%80%D0%B0%D0%BA%D1%82%D0%B5%D1%80%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0-%D1%96%D1%81%D0%BD%D1%83%D1%8E%D1%87%D0%B8%D1%85-%D0%B7%D0%B0%D1%81%D0%BE%D0%B1%D1%96%D0%B2-%D0%B2%D0%B8%D1%80%D1%96%D1%88%D0%B5%D0%BD%D0%BD%D1%8F-%D0%B7%D0%B0%D0%B2%D0%B4%D0%B0%D0%BD%D0%BD%D1%8C">Порівняльна-характеристика-існуючих-засобів-вирішення-завданнь</a></li>
+<li><a href="docs/state-of-the-art.html#%D0%92%D0%B8%D1%81%D0%BD%D0%BE%D0%B2%D0%BA%D0%B8">Висновки</a></li>
+<li><a href="docs/state-of-the-art.html#%D0%9F%D0%BE%D1%81%D0%B8%D0%BB%D0%B0%D0%BD%D0%BD%D1%8F">Посилання</a></li>
+</ul>
+<h2 id="Основні-визначення"><a class="header" href="#Основні-визначення">Основні визначення</a></h2>
+<p><a href="https://uk.wikipedia.org/wiki/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%96%D0%BD%D0%BD%D1%8F_%D0%BF%D1%80%D0%BE%D1%94%D0%BA%D1%82%D0%B0%D0%BC%D0%B8">Система управління проєктами</a> — це комплексне програмне забезпечення, що охоплює програми для планування завдань, складання розпису, контролю ціни і керування бюджетом, розподілу ресурсів, спільної роботи, спілкування, швидкого керування, документування та адміністрування системи, яке використовуються спільно для керування великими проєктами.</p>
+<p><a href="https://uk.wikipedia.org/wiki/%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%96%D0%BD%D0%BD%D1%8F_%D0%BF%D1%80%D0%BE%D1%94%D0%BA%D1%82%D0%B0%D0%BC%D0%B8">Управління проєктами</a> — це область знань з планування, організації та управління ресурсами з метою успішного досягнення цілей та завершення завдань проєкту. Іноді ототожнюється з управлінням програмами, але програма — це фактично вищий рівень: група пов'язаних та взаємозалежних проєктів.</p>
+<p><a href="https://uk.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D1%94%D0%BA%D1%82_(%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%96%D0%BD%D0%BD%D1%8F_%D0%BF%D1%80%D0%BE%D1%94%D0%BA%D1%82%D0%B0%D0%BC%D0%B8)">Проєкт</a> — це обмежена в часі, ресурсах та вимогах якості унікальна сукупність процесів, направлена на створення нової цінності (продукту).</p>
+<p><a href="https://uk.wikipedia.org/wiki/%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%8F_%D1%80%D0%BE%D0%B7%D1%80%D0%BE%D0%B1%D0%BA%D0%B8_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE_%D0%B7%D0%B0%D0%B1%D0%B5%D0%B7%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%BD%D1%8F">Методологія розробки програмного забезпечення</a> — це сукупність методів, застосовуваних на різних стадіях життєвого циклу розробки програмного забезпечення, що мають спільний філософський підхід та, відповідно до цього підходу, дозволяють забезпечити найкращу ефективність процесів розробки.</p>
+<p><a href="https://uk.wikipedia.org/wiki/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D0%BA%D0%B5%D1%80%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F_%D0%B2%D0%B5%D1%80%D1%81%D1%96%D1%8F%D0%BC%D0%B8">Система керування версіями</a> — це програмний інструмент для керування версіями одиниці інформації: початкового коду програми, скрипту, вебсторінки, вебсайту, 3D-моделі, текстового документу тощо.</p>
+<p><a href="https://en.wikipedia.org/wiki/CI/CD">CI/CD</a> — це комбінована практика безперервної інтеграції (continuous integration) і безперервної доставки (continuous delivery) або, рідше, безперервного розгортання (continuous deployment).</p>
+<h2 id="Підходи-та-способи-вирішення-завданнь"><a class="header" href="#Підходи-та-способи-вирішення-завданнь">Підходи та способи вирішення завданнь</a></h2>
+<p>Для ефективного вирішення завдання створення системи управління проєктами необхідно застосовувати сучасні підходи та методології розробки програмного забезпечення. Це стосується як побудови архітектури, так і використання інноваційних технологій, що дозволяють створювати масштабовані, надійні та продуктивні системи. Одним із ключових аспектів є впровадження гнучких методологій, таких як Agile та Scrum, які дозволяють швидко реагувати на зміни та оптимізувати процеси управління проєктами. Крім того, важливим є застосування автоматизованого тестування та механізмів безперервної інтеграції (CI/CD), що сприяє підвищенню якості коду та зниженню ризику помилок. Використання сучасних інструментів для моніторингу та аналітики допомагає оперативно виявляти проблеми, аналізувати ефективність роботи системи та здійснювати її оптимізацію на всіх етапах життєвого циклу.
+Для ефективного вирішення завданнь по створенню cистеми управління проєктами необхідно застосовувати сучасні підходи та методології розробки програмного забезпечення. Це стосується як побудови архітектури, так і використання інноваційних технологій, що дозволяють створювати масштабовані, надійні та продуктивні системи. Одним із ключових аспектів є впровадження гнучких методологій, таких як Agile та Scrum, які дозволяють швидко реагувати на зміни та оптимізувати процеси управління проєктами. Крім того, важливим є застосування автоматизованого тестування та механізмів безперервної інтеграції (CI/CD), що сприяє підвищенню якості коду та зниженню ризику помилок. Використання сучасних інструментів для моніторингу та аналітики допомагає оперативно виявляти проблеми, аналізувати ефективність роботи системи та здійснювати її оптимізацію на всіх етапах життєвого циклу.</p>
+<h3 id="Життєвий-цикл-програмного-забезпечення"><a class="header" href="#Життєвий-цикл-програмного-забезпечення">Життєвий цикл програмного забезпечення</a></h3>
+<p><strong>Життєвий цикл програмного забезпечення (SDLC)</strong> — це сукупність етапів, через які проходить програмне забезпечення
+від моменту його розробки до моменту виведення з експлуатації. Цей процес забезпечує структуру та порядок
+виконання робіт на кожному етапі розробки, що сприяє створенню надійного, ефективного та безпечного програмного продукту.</p>
+<p><img src="https://cdn.brocoders.com/6_phases_of_software_development_life_cycle_ce25a52c62.png" alt="alt" title="SDLC" /></p>
+<p>Серед основних етапів життєвого циклу програмного забезпечення розділяють:</p>
+<ul>
+<li><strong>Аналіз.</strong> На цьому етапі визначаються основні вимоги до програмного продукту.
+Це включає як функціональні, так і нефункціональні вимоги. Наприклад, визначається, що система повинна робити,
+які її характеристики, обмеження по часу, безпеці, швидкості тощо.</li>
+<li><strong>Проєктування.</strong> Розробляється архітектура програмного забезпечення та його компоненти.
+Визначаються структури даних, алгоритми, інтерфейси, вибір технологій для розробки.</li>
+<li><strong>Розробка.</strong> На цьому етапі здійснюється безпосередня розробка коду згідно з визначеною архітектурою та вимогами.
+Програмісти пишуть код, тестують його, і, в разі потреби, коригують.</li>
+<li><strong>Тестування.</strong> На етапі тестування перевіряється, чи працює програмне забезпечення відповідно до вимог.
+Це включає функціональні, нефункціональні, інтеграційні, системні та інші типи тестування.</li>
+<li><strong>Встановлення та розгортання.</strong> Після завершення тестування програмне забезпечення розгортається в робочому середовищі.
+Здійснюється встановлення програмного продукту на сервери або на робочі станції користувачів, налаштування бази даних, сервісів і т.д.</li>
+<li><strong>Експлуатація та підтримка.</strong> Після розгортання програмне забезпечення переходить до етапу експлуатації.
+Протягом цього періоду програмне забезпечення використовується в реальних умовах, і при необхідності
+проводиться коригування, виправлення помилок, оптимізація, а також випуск оновлень.</li>
+</ul>
+<p>Життєвий цикл програмного забезпечення забезпечує систематичний підхід до розробки, тестування, розгортання та підтримки
+програмного продукту. Кожен етап життєвого циклу є критичним для досягнення високої якості кінцевого продукту та його
+успішного впровадження в реальному середовищі.</p>
+<h3 id="Методології-розробки-програмного-забезпечення"><a class="header" href="#Методології-розробки-програмного-забезпечення">Методології розробки програмного забезпечення</a></h3>
+<p>Вибір методології розробки є ключовим етапом у створенні cистеми управління проєктами, оскільки від цього залежить швидкість впровадження, якість продукту та можливість гнучко адаптуватися до змін. Нижче розглянуто основні підходи, які можуть бути використані.</p>
+<h3 id="agile"><a class="header" href="#agile">Agile</a></h3>
+<p>Методологія <strong>Agile</strong> (гнучка розробка) передбачає створення програмного забезпечення за допомогою ітераційного підходу, де кожен етап супроводжується тестуванням та оцінкою результатів. Основні принципи Agile базуються на Маніфесті гнучкої розробки, який включає такі ключові положення:</p>
+<ul>
+<li><strong>Люди та взаємодія важливіші за процеси та інструменти</strong> – гнучкі команди самостійно організовують роботу та приймають рішення на основі поточних потреб проєкту.</li>
+<li><strong>Працюючий продукт важливіший за документацію</strong> – головним показником успішності є створення реального, функціонального програмного забезпечення.</li>
+<li><strong>Співпраця із замовником важливіша за контрактні зобов’язання</strong> – тісна комунікація між розробниками та користувачами дозволяє швидко адаптувати продукт до змінюваних вимог.</li>
+<li><strong>Готовність до змін важливіша за слідування плану</strong> – гнучкий підхід дозволяє оперативно реагувати на нові вимоги та впроваджувати зміни без значних витрат.</li>
+</ul>
+<p><img src="https://static.vecteezy.com/system/resources/previews/048/380/964/non_2x/agile-project-management-development-methodology-infographic-agile-software-development-lifecycle-process-sprints-illustration-agile-development-diagram-vector.jpg" alt="alt" title="Agile" /></p>
+<p>Agile застосовується у випадках, коли вимоги до продукту можуть змінюватися в процесі розробки, і потрібно забезпечити швидку адаптацію до нових реалій. Цей підхід підходить для динамічних проєктів, де пріоритетом є швидкість та якість розробки.</p>
+<h3 id="scrum"><a class="header" href="#scrum">Scrum</a></h3>
+<p><strong>Scrum</strong> є одним із найпопулярніших фреймворків методології Agile, що використовується для управління розробкою програмного забезпечення. Основна його особливість – поділ розробки на короткі цикли (спринти), кожен з яких триває від 1 до 4 тижнів і завершується випуском робочої версії продукту.</p>
+<p>Scrum базується на принципах емпіричного управління процесами, що означає адаптацію до змін, контроль над робочими процесами через прозорість, інспекцію та адаптацію. У Scrum існує кілька ключових ролей:</p>
+<ul>
+<li><strong>Scrum Master</strong> – координатор, який забезпечує ефективну роботу команди, усуває перешкоди та допомагає дотримуватися принципів Scrum.</li>
+<li><strong>Product Owner</strong> – відповідальний за визначення пріоритетів завдань, формування беклогу продукту та взаємодію з користувачами.</li>
+<li><strong>Команда розробників</strong> – група спеціалістів, які самостійно планують виконання завдань та розподіляють роботу.</li>
+</ul>
+<p><img src="https://miro.medium.com/v2/resize:fit:1200/0*YpTyi-xiGmFv2ItS.jpg" alt="alt" title="Scrum" /></p>
+<p>Основний робочий процес у Scrum включає:</p>
+<ul>
+<li><strong>Формування беклогу продукту</strong> – список завдань, які необхідно реалізувати в майбутньому.</li>
+<li><strong>Планування спринту</strong> – вибір завдань для виконання в поточному спринті.</li>
+<li><strong>Щоденні стендапи (Daily Scrum)</strong> – короткі зустрічі, на яких обговорюється прогрес, проблеми та плани на день.</li>
+<li><strong>Демонстрація інкременту</strong> – представлення результатів роботи замовникам та команді.</li>
+<li><strong>Ретроспектива</strong> – аналіз того, що можна покращити в наступному спринті.</li>
+</ul>
+<p>Scrum підходить для складних проєктів із мінливими вимогами, де важливо швидко адаптуватися до змін і мати гнучкий процес розробки.</p>
+<h3 id="kanban"><a class="header" href="#kanban">Kanban</a></h3>
+<p><strong>Kanban</strong> – це метод управління розробкою, що базується на візуалізації робочого процесу та оптимізації потоку завдань. Його основна концепція – Kanban-дошка, на якій відображаються завдання на різних етапах їх виконання (наприклад, "Зробити", "У процесі", "Готово").</p>
+<p>Основні принципи Kanban:</p>
+<ul>
+<li><strong>Візуалізація роботи</strong> – використання дошки для відстеження завдань у реальному часі.</li>
+<li><strong>Обмеження кількості завдань у роботі (Work In Progress, WIP)</strong> – обмеження дозволяє уникнути перевантаження команди та зосередитися на пріоритетних завданнях.</li>
+<li><strong>Постійне вдосконалення процесу</strong> – аналіз продуктивності та оптимізація робочого процесу.</li>
+</ul>
+<p>Kanban добре підходить для команд, які працюють із потоком запитів (наприклад, підтримка клієнтів або технічне обслуговування), де важливо швидко реагувати на нові задачі та ефективно розподіляти робоче навантаження.</p>
+<p><img src="https://totalsynergy.com/wp-content/uploads/2010-Kanban-Infographics-01-inline-1024x653.png" alt="alt" title="Kanban" /></p>
+<h3 id="waterfall"><a class="header" href="#waterfall">Waterfall</a></h3>
+<p><strong>Waterfall</strong> – це класичний підхід до розробки ПЗ, який передбачає проходження чітко визначених етапів у строго заданому порядку. Основні фази Waterfall:</p>
+<ul>
+<li><strong>Збір та аналіз вимог</strong> – визначення всіх функцій та можливостей майбутньої системи.</li>
+<li><strong>Проєктування (дизайн)</strong> – розробка архітектури програмного забезпечення.</li>
+<li><strong>Реалізація (кодинг)</strong> – безпосереднє програмування згідно зі специфікаціями.</li>
+<li><strong>Тестування – перевірка</strong> правильності роботи системи.</li>
+<li><strong>Розгортання та підтримка</strong> – випуск продукту та усунення можливих дефектів.</li>
+</ul>
+<p>Основна перевага Waterfall – чітке планування та передбачуваність. Проте цей підхід не дуже добре підходить для проєктів, де можуть змінюватися вимоги, оскільки повернення до попередніх етапів є дорогим та складним.</p>
+<p><img src="https://management.org/wp-content/uploads/2022/03/5-Stages-of-the-Waterfall-Model.jpg" alt="alt" title="Waterfall" /></p>
+<h3 id="devops"><a class="header" href="#devops">DevOps</a></h3>
+<p><strong>DevOps</strong> – це методологія, яка поєднує розробку (Development) та операційне управління (Operations), створюючи єдину культуру співпраці між командами. Основна мета DevOps – прискорити випуск оновлень і підвищити якість програмного забезпечення через автоматизацію та безперервну інтеграцію.</p>
+<p>Основні принципи DevOps:</p>
+<ul>
+<li><strong>Автоматизація процесів</strong> – використання CI/CD (Continuous Integration / Continuous Deployment) для автоматичного тестування та розгортання змін.</li>
+<li><strong>Моніторинг та логування</strong> – постійний контроль продуктивності та аналіз помилок за допомогою таких інструментів, як Prometheus, Grafana, ELK Stack (Elasticsearch, Logstash, Kibana).</li>
+<li><strong>Співпраця між командами</strong> – розробники, тестувальники та адміністратори працюють разом, щоб прискорити процес впровадження нових функцій.</li>
+<li><strong>Інфраструктура як код (Infrastructure as Code, IaC)</strong> – використання таких інструментів, як Terraform та Ansible для управління інфраструктурою.</li>
+</ul>
+<p>DevOps особливо ефективний для великих проєктів, де важлива швидкість оновлень, надійність системи та мінімізація простоїв.</p>
+<p><img src="https://www.ryadel.com/wp-content/uploads/2019/06/devops-lifecycle-with-toolchains-tool.jpg" alt="alt" title="DevOps" /></p>
+<h2 id="Тестування-програмного-забезпечення"><a class="header" href="#Тестування-програмного-забезпечення">Тестування програмного забезпечення</a></h2>
+<p>Тестування програмного забезпечення є невід'ємною частиною життєвого циклу розробки програмних продуктів. Воно допомагає виявити помилки, перевірити відповідність функціональним та нефункціональним вимогам, а також підвищити якість кінцевого продукту.</p>
+<h3 id="Види-тестування"><a class="header" href="#Види-тестування">Види тестування</a></h3>
+<h3 id="1-За-рівнем-тестування"><a class="header" href="#1-За-рівнем-тестування">1. За рівнем тестування:</a></h3>
+<ul>
+<li><strong>Модульне тестування (Unit Testing)</strong> - тестування окремих модулів або компонентів програми.</li>
+<li><strong>Інтеграційне тестування (Integration Testing)</strong> - перевірка взаємодії між модулями та сервісами.</li>
+<li><strong>Системне тестування (System Testing)</strong> - тестування всієї системи в цілому.</li>
+<li><strong>Приймальне тестування (Acceptance Testing)</strong> - перевірка відповідності програмного забезпечення бізнес-вимогам.</li>
+</ul>
+<h3 id="2-За-способом-виконання"><a class="header" href="#2-За-способом-виконання">2. За способом виконання:</a></h3>
+<ul>
+<li><strong>Ручне тестування (Manual Testing)</strong> - тестування, що виконується без використання спеціальних інструментів автоматизації.</li>
+<li><strong>Автоматизоване тестування (Automated Testing)</strong> - тестування, що виконується за допомогою скриптів та тестових фреймворків (Selenium, JUnit, Cypress тощо).</li>
+</ul>
+<h3 id="3-За-типом-тестування"><a class="header" href="#3-За-типом-тестування">3. За типом тестування:</a></h3>
+<ul>
+<li><strong>Функціональне тестування (Functional Testing)</strong> - перевірка роботи програмного забезпечення згідно з вимогами.</li>
+<li><strong>Нефункціональне тестування (Non-functional Testing)</strong>:
+<ul>
+<li><strong>Продуктивність (Performance Testing)</strong> - тестування швидкодії, навантаження, стрес-тестування.</li>
+<li><strong>Безпека (Security Testing)</strong> - перевірка на вразливості та захист від атак.</li>
+<li><strong>Юзабіліті (Usability Testing)</strong> - оцінка зручності використання інтерфейсу.</li>
+<li><strong>Сумісність (Compatibility Testing)</strong> - перевірка роботи на різних пристроях, ОС, браузерах.</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-За-методом-тестування"><a class="header" href="#4-За-методом-тестування">4. За методом тестування:</a></h3>
+<ul>
+<li><strong>Чорна скринька (Black-box Testing)</strong> - тестування без знання внутрішньої реалізації.</li>
+<li><strong>Біла скринька (White-box Testing)</strong> - тестування з доступом до коду.</li>
+<li><strong>Сіра скринька (Gray-box Testing)</strong> - комбінований підхід, що включає знання частини реалізації.</li>
+</ul>
+<h3 id="Інструменти-для-тестування"><a class="header" href="#Інструменти-для-тестування">Інструменти для тестування</a></h3>
+<ul>
+<li><strong>Selenium, Cypress</strong> – для автоматизації тестування веб-додатків.</li>
+<li><strong>JUnit, TestNG</strong> – для тестування Java-додатків.</li>
+<li><strong>Postman, SoapUI</strong> – для тестування API.</li>
+<li><strong>JMeter, Gatling</strong> – для тестування продуктивності.</li>
+<li><strong>OWASP ZAP, Burp Suite</strong> – для тестування безпеки.</li>
+</ul>
+<p>Тестування забезпечує стабільність, надійність та високу якість програмного забезпечення, що допомагає зменшити ризики та витрати на підтримку продукту.</p>
+<h3 id="Інструменти-для-моніторингу-і-аналітики"><a class="header" href="#Інструменти-для-моніторингу-і-аналітики">Інструменти для моніторингу і аналітики</a></h3>
+<p>Інструменти моніторингу та аналітики допомагають виявляти проблеми та оптимізувати виконання проєктів.</p>
+<p><strong>Zabbix</strong> використовується для контролю серверів та мереж: наприклад, він може відстежувати навантаження бази даних MySQL, налаштовувати сповіщення про критичні збої та візуалізувати продуктивність системи.</p>
+<p><strong>ELK Stack (Elasticsearch, Logstash, Kibana)</strong> ефективний для аналізу логів – його застосовують для моніторингу веб-серверів, де Logstash збирає дані, Elasticsearch швидко їх обробляє, а Kibana надає зручні графіки для аналізу запитів і помилок.</p>
+<p>Для аналізу продуктивності застосовують <strong>New Relic</strong>, який дозволяє трасувати запити у веб-додатках. Наприклад, у <strong>Node.js-додатку</strong> він може показати, які запити до бази даних працюють найповільніше, допомагаючи їх оптимізувати.</p>
+<p>Моніторинг автоматизує сповіщення та інтегрується з CRM або ERP для безперервного контролю процесів. Деякі рішення, як-от AIOps, використовують машинне навчання для прогнозування ризиків. У підсумку, такі системи забезпечують ефективне управління ресурсами та зменшують імовірність затримок.</p>
+<h2 id="Порівняльна-характеристика-існуючих-засобів-вирішення-завданнь"><a class="header" href="#Порівняльна-характеристика-існуючих-засобів-вирішення-завданнь">Порівняльна характеристика існуючих засобів вирішення завданнь</a></h2>
+<p><a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects">GitHub Projects</a> — це вбудований інструмент управління завданнями, який інтегрований безпосередньо в GitHub і дозволяє організовувати процес розробки за допомогою Kanban-дошок. Його основні можливості включають автоматизацію робочих процесів за допомогою GitHub Actions, зручне керування завданнями, а також тісну інтеграцію з GitHub Issues і pull requests, що дозволяє розробникам безпосередньо пов’язувати кодові зміни із завданнями. Крім того, GitHub Projects підтримує GitHub Pages, що дає змогу автоматично публікувати документацію чи вебсайти без додаткових зусиль. Цей інструмент чудово підходить для команд, які працюють у середовищі GitHub і хочуть мати єдину платформу для управління процесами розробки.</p>
+<p><a href="https://about.gitlab.com">GitLab</a> — це комплексна DevOps-платформа, яка об’єднує систему контролю версій, управління задачами, CI/CD і безпеку проєктів в одному місці. Вбудований таск-менеджер GitLab дозволяє створювати Kanban-дошки, планувати Roadmaps і відстежувати прогрес команди. Однією з ключових переваг є GitLab CI/CD, що дозволяє автоматизувати розгортання, тестування та інтеграцію змін у коді. Інструмент також підтримує GitLab Pages, що спрощує хостинг документації або вебсайтів. Завдяки інтеграції з Docker і Kubernetes, GitLab є ідеальним рішенням для DevOps-команд, які хочуть мати єдине середовище для всіх етапів розробки.</p>
+<p><a href="https://www.atlassian.com/software/jira">JIRA</a> — це один із найпопулярніших інструментів управління проєктами та відстеження проблем, який надає широкі можливості як для великих, так і для малих команд. Він підтримує Agile-методології, такі як Scrum і Kanban, дозволяючи командам створювати та керувати беклогами, відстежувати статус завдань і аналізувати прогрес за допомогою графіків burndown та velocity charts. Завдяки глибокій інтеграції з GitHub, GitLab і Bitbucket, JIRA автоматично пов’язує кодові зміни з відповідними завданнями. Інструмент також підтримує інтеграцію з Jenkins, Bamboo та іншими CI/CD-рішеннями, що робить його потужним вибором для команд, які працюють над складними програмними продуктами.</p>
+<p><a href="https://nulab.com/backlog">Backlog</a> — це зручна платформа для управління проєктами, яка об’єднує баг-трекінг, таск-менеджмент і контроль версій у єдиному просторі. Вона дозволяє організовувати задачі за допомогою Kanban-дощок, налаштовувати пріоритети та терміни виконання, а також вести документацію завдяки вбудованому модулю Wiki. Особливою перевагою є підтримка Git-репозиторіїв безпосередньо в проєкті, що дозволяє командам працювати над кодом без потреби у зовнішніх інструментах. Інтеграція з GitHub, GitLab та SVN дає змогу легко синхронізувати зміни. Завдяки доступній мобільній версії, Backlog зручний для команд, які хочуть поєднати керування задачами та версіонування коду в одному місці.</p>
+<p><a href="https://www.redmine.org">Redmine</a> — це гнучка система управління проєктами з можливістю інтеграції з Git і SVN, яка дозволяє відстежувати задачі, контролювати дедлайни та вести документацію за допомогою вбудованого модуля Wiki. Однією з ключових особливостей Redmine є його модульна структура, що дозволяє розширювати функціональність через плагіни, зокрема для Agile-управління проєктами. Інструмент також підтримує гнучку систему звітності та аналітики, що допомагає командам відстежувати ефективність роботи. Завдяки можливості самостійного хостингу Redmine є ідеальним рішенням для компаній, які шукають безкоштовний інструмент із можливістю кастомізації під свої потреби.</p>
+<p><a href="https://trello.com">Trello</a> — це простий, візуально орієнтований таск-менеджер, який дозволяє організовувати робочий процес за допомогою Kanban-дощок і карток. Завдяки інтеграції з GitHub, GitLab та Bitbucket, розробники можуть пов’язувати задачі зі змінами у коді, відстежувати статус pull requests і автоматизувати робочі процеси за допомогою Power-Ups. Trello підтримує гнучку систему тегів, чеклістів і дедлайнів, що робить його зручним для організації командної роботи. Простий інтерфейс і мобільна підтримка роблять цей інструмент ідеальним вибором для невеликих команд або проєктів, яким потрібне легке та інтуїтивне керування завданнями.</p>
+<p><a href="https://clickup.com">ClickUp</a> — це багатофункціональний таск-менеджер, який об'єднує управління задачами, документацією та аналітику в одному просторі. Його ключовою перевагою є гнучкість: користувачі можуть працювати в різних форматах, включаючи списки, Kanban-дошки та Gantt-діаграми. ClickUp підтримує інтеграцію з GitHub, GitLab і Bitbucket, що дозволяє автоматично відстежувати зміни у коді та пов’язувати їх із відповідними завданнями. Крім цього, система пропонує потужні можливості автоматизації, включаючи нагадування, залежності між задачами та розширену аналітику. Завдяки мобільній версії та веб-додатку ClickUp чудово підходить для команд, які шукають універсальне рішення для керування проєктами та відстеження продуктивності.</p>
+<p>Порівняльна таблиця:</p>
+<div class="table-wrapper"><table><thead><tr><th>Критерій</th><th style="text-align: center">Наш проєкт</th><th style="text-align: center">GitHub Projects</th><th style="text-align: center">GitLab</th><th style="text-align: center">JIRA</th><th style="text-align: center">Backlog</th><th style="text-align: center">Redmine</th><th style="text-align: center">Trello</th><th style="text-align: center">ClickUp</th></tr></thead><tbody>
+<tr><td><strong>Functionality</strong></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td></tr>
+<tr><td>Kanban-дошки</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td></tr>
+<tr><td>Scrum-підтримка</td><td style="text-align: center">✅</td><td style="text-align: center">❌</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">❌</td><td style="text-align: center">⚠️ (через плагіни)</td><td style="text-align: center">❌</td><td style="text-align: center">✅</td></tr>
+<tr><td>CI/CD інтеграція</td><td style="text-align: center">✅</td><td style="text-align: center">✅ (GitHub Actions)</td><td style="text-align: center">✅ (GitLab CI/CD)</td><td style="text-align: center">✅ (Jenkins, Bamboo)</td><td style="text-align: center">❌</td><td style="text-align: center">❌</td><td style="text-align: center">❌</td><td style="text-align: center">⚠️ (через інтеграції)</td></tr>
+<tr><td>Управління кодом</td><td style="text-align: center">✅</td><td style="text-align: center">✅ (GitHub)</td><td style="text-align: center">✅ (GitLab)</td><td style="text-align: center">⚠️ (через інтеграції)</td><td style="text-align: center">✅ (Git-репозиторії)</td><td style="text-align: center">✅ (Git, SVN)</td><td style="text-align: center">❌</td><td style="text-align: center">⚠️ (через інтеграції)</td></tr>
+<tr><td>Автоматизація</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (обмежена)</td><td style="text-align: center">⚠️ (через плагіни)</td><td style="text-align: center">✅ (Power-Ups)</td><td style="text-align: center">✅ (автоматизації)</td></tr>
+<tr><td><strong>Usability</strong></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td></tr>
+<tr><td>Інтуїтивний інтерфейс</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (складний для новачків)</td><td style="text-align: center">⚠️ (складний для новачків)</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (застарілий)</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td></tr>
+<tr><td>Гнучкість налаштувань</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (обмежена)</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (мінімальна)</td><td style="text-align: center">✅</td></tr>
+<tr><td>Мобільна підтримка</td><td style="text-align: center">❌</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (обмежена)</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td></tr>
+<tr><td>Легкість впровадження</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (потрібна підготовка)</td><td style="text-align: center">⚠️ (складне налаштування)</td><td style="text-align: center">✅</td><td style="text-align: center">❌</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td></tr>
+<tr><td>Інтеграції з іншими сервісами</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (через плагіни)</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td></tr>
+<tr><td><strong>Reliability</strong></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td></tr>
+<tr><td>Відмовостійкість</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td></tr>
+<tr><td>Можливість резервного копіювання</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">❌</td><td style="text-align: center">✅</td></tr>
+<tr><td>Підтримка доступності 24/7</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (залежить від хостингу)</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td></tr>
+<tr><td>Безпека доступу</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (обмежена)</td><td style="text-align: center">✅</td></tr>
+<tr><td>Логування змін</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">❌</td><td style="text-align: center">✅</td></tr>
+<tr><td><strong>Performance</strong></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td></tr>
+<tr><td>Швидкодія системи</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (можливі затримки)</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td></tr>
+<tr><td>Масштабованість</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (залежить від хостингу)</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td></tr>
+<tr><td>Робота з великими проєктами</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (обмежено)</td><td style="text-align: center">⚠️ (можливі проблеми)</td><td style="text-align: center">❌</td><td style="text-align: center">✅</td></tr>
+<tr><td>Швидке оброблення запитів</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (іноді повільно)</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td></tr>
+<tr><td>Невелике авантаження на сервер</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (залежить від налаштувань)</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td></tr>
+<tr><td><strong>Supportability</strong></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td><td style="text-align: center"></td></tr>
+<tr><td>Доступність технічної підтримки</td><td style="text-align: center">⚠️ (обмежена)</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (спільнота)</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td></tr>
+<tr><td>Оновлення та виправлення помилок</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (залежить від спільноти)</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td></tr>
+<tr><td>Наявність документації</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td></tr>
+<tr><td>Підтримка плагінів/розширень</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (обмежено)</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td></tr>
+<tr><td>Можливість кастомізації</td><td style="text-align: center">❌</td><td style="text-align: center">⚠️ (обмежена)</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">⚠️ (мінімальна)</td><td style="text-align: center">✅</td></tr>
+</tbody></table>
+</div>
+<h2 id="Висновки"><a class="header" href="#Висновки">Висновки</a></h2>
+<p>Попри велику кількість інструментів для управління проєктами, більшість із них не забезпечують необхідного балансу між функціональністю, доступністю та зручністю використання. Деякі сервіси обмежують критично важливі можливості платними підписками, тоді як інші мають складний інтерфейс або не покривають усіх потреб користувачів. Це створює ситуацію, коли командам доводиться комбінувати кілька різних платформ або ж миритися з обмеженнями поточних рішень.</p>
+<p>Розробка нової системи управління проєктами, яка усуває ці недоліки, є не лише актуальним, а й стратегічно виправданим кроком. Інструмент, що пропонує інтуїтивний інтерфейс, необхідні функції без прихованих бар’єрів і гнучкість у налаштуваннях під різні робочі процеси, може суттєво змінити підхід до ведення проєктів. Крім того, інтеграція корисних можливостей, які зараз або відсутні, або реалізовані неефективно в конкурентних продуктах, стане важливою перевагою.</p>
+<p>Таким чином, створення нового рішення має потенціал зайняти свою нішу на ринку та залучити широку аудиторію користувачів – від фрилансерів і невеликих команд до великих компаній. Орієнтація на реальні потреби, усунення існуючих проблем і впровадження інноваційних функцій зроблять цю систему ефективною альтернативою на фоні вже доступних платформ.</p>
+<h2 id="Посилання"><a class="header" href="#Посилання">Посилання</a></h2>
+<ol>
+<li>
+<p><a href="https://uk.wikipedia.org/wiki/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%96%D0%BD%D0%BD%D1%8F_%D0%BF%D1%80%D0%BE%D1%94%D0%BA%D1%82%D0%B0%D0%BC%D0%B8">Система управління проєктами</a></p>
+</li>
+<li>
+<p><a href="https://uk.wikipedia.org/wiki/%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%96%D0%BD%D0%BD%D1%8F_%D0%BF%D1%80%D0%BE%D1%94%D0%BA%D1%82%D0%B0%D0%BC%D0%B8">Управління проєктами</a></p>
+</li>
+<li>
+<p><a href="https://uk.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D1%94%D0%BA%D1%82_(%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%96%D0%BD%D0%BD%D1%8F_%D0%BF%D1%80%D0%BE%D1%94%D0%BA%D1%82%D0%B0%D0%BC%D0%B8)">Проєкт</a></p>
+</li>
+<li>
+<p><a href="https://uk.wikipedia.org/wiki/%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%8F_%D1%80%D0%BE%D0%B7%D1%80%D0%BE%D0%B1%D0%BA%D0%B8_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE_%D0%B7%D0%B0%D0%B1%D0%B5%D0%B7%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%BD%D1%8F">Методологія розробки програмного забезпечення</a></p>
+</li>
+<li>
+<p><a href="https://uk.wikipedia.org/wiki/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D0%BA%D0%B5%D1%80%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F_%D0%B2%D0%B5%D1%80%D1%81%D1%96%D1%8F%D0%BC%D0%B8">Система керування версіями</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/CI/CD">CI/CD</a></p>
+</li>
+<li>
+<p><a href="https://uk.wikipedia.org/wiki/%D0%96%D0%B8%D1%82%D1%82%D1%94%D0%B2%D0%B8%D0%B9_%D1%86%D0%B8%D0%BA%D0%BB_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE_%D0%B7%D0%B0%D0%B1%D0%B5%D0%B7%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%BD%D1%8F">Життєвий цикл програмного забезпечення</a></p>
+</li>
+<li>
+<p><a href="https://payproglobal.com/uk/%D0%B2%D1%96%D0%B4%D0%BF%D0%BE%D0%B2%D1%96%D0%B4%D1%96/%D1%89%D0%BE-%D1%82%D0%B0%D0%BA%D0%B5-agile-%D1%80%D0%BE%D0%B7%D1%80%D0%BE%D0%B1%D0%BA%D0%B0/#:~:text=Agile%2D%D1%80%D0%BE%D0%B7%D1%80%D0%BE%D0%B1%D0%BA%D0%B0%20%E2%80%94%20%D1%86%D0%B5%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%8F%20%D1%80%D0%BE%D0%B7%D1%80%D0%BE%D0%B1%D0%BA%D0%B8,%D0%B0%D0%B4%D0%B0%D0%BF%D1%82%D0%B0%D1%86%D1%96%D1%97%20%D0%B2%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%96%20%D1%97%D1%97%20%D0%B2%D0%BF%D1%80%D0%BE%D0%B2%D0%B0%D0%B4%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F.">Agile</a></p>
+</li>
+<li>
+<p><a href="https://brainrain.com.ua/uk/scrum-upravlinnya-proektom/#:~:text=%C2%AB%D0%A1%D0%BA%D1%80%D0%B0%D0%BC%20%E2%80%94%20%D1%86%D0%B5%20%D1%84%D1%80%D0%B5%D0%B9%D0%BC%D0%B2%D0%BE%D1%80%D0%BA%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%96%D0%BD%D0%BD%D1%8F%2C,%D0%B0%D0%B4%D0%B0%D0%BF%D1%82%D0%B0%D1%86%D1%96%D1%8E%20%D1%80%D0%BE%D0%B1%D0%BE%D1%87%D0%B8%D1%85%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%96%D0%B2%20%D0%B2%D1%96%D0%B4%D0%BF%D0%BE%D0%B2%D1%96%D0%B4%D0%B0%D1%8E%D1%82%D1%8C%20%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8%C2%BB.">Scrum</a></p>
+</li>
+<li>
+<p><a href="https://brainrain.com.ua/uk/shcho-take-kanban/#:~:text=%D0%9A%D0%B0%D0%BD%D0%B1%D0%B0%D0%BD%20%E2%80%94%20%D1%86%D0%B5%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%20%D1%80%D0%BE%D0%B7%D1%80%D0%BE%D0%B1%D0%BA%D0%B8%2C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%96%D0%BD%D0%BD%D1%8F,%D0%BA%D1%96%D0%BB%D1%8C%D0%BA%D0%BE%D1%81%D1%82%D1%96%20%D0%BD%D0%B5%D0%B7%D0%B0%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%D0%BE%D1%97%20%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8%20(WIP).">Kanban</a></p>
+</li>
+<li>
+<p><a href="https://uk.wikipedia.org/wiki/%D0%92%D0%BE%D0%B4%D0%BE%D1%81%D0%BF%D0%B0%D0%B4%D0%BD%D0%B0_%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C">Waterfall</a></p>
+</li>
+<li>
+<p><a href="https://wezom.com.ua/ua/blog/chto-takoe-devops">DevOps</a></p>
+</li>
+<li>
+<p><a href="https://cdn.brocoders.com/6_phases_of_software_development_life_cycle_ce25a52c62.png">SDLC photo</a></p>
+</li>
+<li>
+<p><a href="https://static.vecteezy.com/system/resources/previews/048/380/964/non_2x/agile-project-management-development-methodology-infographic-agile-software-development-lifecycle-process-sprints-illustration-agile-development-diagram-vector.jpg">Agile photo</a></p>
+</li>
+<li>
+<p><a href="https://miro.medium.com/v2/resize:fit:1200/0*YpTyi-xiGmFv2ItS.jpg">Scrum photo</a></p>
+</li>
+<li>
+<p><a href="https://totalsynergy.com/wp-content/uploads/2010-Kanban-Infographics-01-inline-1024x653.png">Kanban photo</a></p>
+</li>
+<li>
+<p><a href="https://management.org/wp-content/uploads/2022/03/5-Stages-of-the-Waterfall-Model.jpg">Waterfall photo</a></p>
+</li>
+<li>
+<p><a href="https://www.ryadel.com/wp-content/uploads/2019/06/devops-lifecycle-with-toolchains-tool.jpg">DevOps photo</a></p>
+</li>
+<li>
+<p><a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects">GitHub Projects</a></p>
+</li>
+<li>
+<p><a href="https://about.gitlab.com">GitLab</a></p>
+</li>
+<li>
+<p><a href="https://www.atlassian.com/software/jira">JIRA</a></p>
+</li>
+<li>
+<p><a href="https://nulab.com/backlog">Backlog</a></p>
+</li>
+<li>
+<p><a href="https://www.redmine.org">Redmine</a></p>
+</li>
+<li>
+<p><a href="https://trello.com">Trello</a></p>
+</li>
+<li>
+<p><a href="https://clickup.com">ClickUp</a></p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Система-управління-проєктами"><a class="header" href="#Система-управління-проєктами">Система управління проєктами</a></h1>
+<h2 id="Запити-зацікавлених-осіб"><a class="header" href="#Запити-зацікавлених-осіб">Запити зацікавлених осіб</a></h2>
+<h2 id="Вступ-2"><a class="header" href="#Вступ-2">Вступ</a></h2>
+<p>Система управління проєктами (СУП) – це програмне забезпечення, призначене для планування, організації, контролю та управління ресурсами проєкту. Даний документ описує вимоги до системи, включаючи її функціональні можливості, характеристики продуктивності, надійність та підтримку. Він містить загальний огляд, визначення основних термінів, сценарії використання та характеристики користувачів.</p>
+<h3 id="Мета"><a class="header" href="#Мета">Мета</a></h3>
+<p>Метою створення цієї системи є впровадження інтегрованої платформи для управління проєктами, що дозволяє автоматизувати процеси планування, контролю виконання завдань, управління ресурсами та комунікацію між учасниками проєкту. Система повинна забезпечувати прозорість робочих процесів, підвищувати ефективність командної роботи та надавати аналітичні дані для прийняття рішень.</p>
+<h3 id="Контекст"><a class="header" href="#Контекст">Контекст</a></h3>
+<p>Цей документ стосується інформаційної системи, яка буде використовуватися компаніями для управління проєктами будь-якої складності. Вона буде інтегруватися з існуючими системами контролю версій, комунікаційними платформами та інструментами для спільної роботи. Дана система може використовуватися в різних галузях, включаючи IT, будівництво, маркетинг та інші сфери, де необхідно координувати виконання завдань та контролювати ресурси.</p>
+<h3 id="Основні-визначення-та-скорочення"><a class="header" href="#Основні-визначення-та-скорочення">Основні визначення та скорочення</a></h3>
+<ul>
+<li><strong>Система управління проєктами (СУП)</strong> – програмне забезпечення для організації, планування та моніторингу проєктної діяльності.</li>
+<li><strong>Користувач</strong> – особа, що взаємодіє з системою (менеджер проєкту, виконавець, замовник).</li>
+<li><strong>Завдання (Task)</strong> – одиниця роботи в межах проєкту.</li>
+<li><strong>Дошка завдань (Task Board)</strong> – візуальне представлення списку завдань у різних станах виконання.</li>
+<li><strong>Ресурси</strong> – матеріальні та нематеріальні активи, необхідні для реалізації проєкту.</li>
+<li><strong>Sprint</strong> – короткий цикл виконання завдань у гнучких методологіях (Agile, Scrum).</li>
+<li><strong>Backlog</strong> – список невиконаних завдань проєкту.</li>
+</ul>
+<h3 id="Посилання-1"><a class="header" href="#Посилання-1">Посилання</a></h3>
+<ul>
+<li><a href="https://agilemanifesto.org/">Agile Manifesto</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Project_Management_Body_of_Knowledge">PMBOK Guide</a></li>
+<li><a href="https://www.scrum.org/resources/scrum-guide">Опис SCRUM-методології</a></li>
+</ul>
+<h2 id="Короткий-зміст"><a class="header" href="#Короткий-зміст">Короткий зміст</a></h2>
+<p>Документ містить:</p>
+<ol>
+<li>Опис характеристик бізнес-процесів у контексті використання системи.</li>
+<li>Визначення основних функціональних можливостей системи.</li>
+<li>Огляд вимог до продуктивності, надійності та підтримки.</li>
+<li>Визначення категорій користувачів та їхніх очікувань від системи.</li>
+</ol>
+<h2 id="Характеристика-ділових-процесів"><a class="header" href="#Характеристика-ділових-процесів">Характеристика ділових процесів</a></h2>
+<h3 id="Бізнес-сценарій-Управління-завданнями"><a class="header" href="#Бізнес-сценарій-Управління-завданнями">Бізнес-сценарій: Управління завданнями</a></h3>
+<h3 id="Утворення-акаунту"><a class="header" href="#Утворення-акаунту">Утворення акаунту</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><code>CreateAccount</code></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Створення акаунту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач не має акаунту в системі</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left"><div style="width:300px">Створено новий акаунт</div></td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Обов’язкові поля не заповнені — <code>NullReferenceException</code><br>- Акаунт вже існує — <code>UserAlreadyExistsException</code><br>- Пароль не відповідає вимогам — <code>NotStrongPasswordException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває форму реєстрації<br>2. Вводить необхідні дані<br>3. Натискає "Зареєструватися"<br>4. Перевіряється коректність введених даних<br>5. Якщо всі перевірки пройдені, створюється акаунт</td></tr>
+</tbody></table>
+</div>
+<h3 id="Редагування-інформації-акаунту"><a class="header" href="#Редагування-інформації-акаунту">Редагування інформації акаунту</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><code>EditAccount</code></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Редагування інформації акаунту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач авторизований</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left"><div style="width:500px">Оновлена інформація про акаунт</div></td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Некоректний формат даних — <code>InvalidDataException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач переходить у налаштування акаунту<br>2. Вносить зміни<br>3. Натискає "Зберегти"<br>4. Перевіряється коректність введених даних<br>5. Якщо все коректно, оновлюється інформація про акаунт</td></tr>
+</tbody></table>
+</div>
+<h3 id="Видалення-акаунту"><a class="header" href="#Видалення-акаунту">Видалення акаунту</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><code>DeleteAccount</code></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Видалення акаунту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач авторизований</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Акаунт видалено</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Користувач не підтвердив видалення — <code>CancelledOperationException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач переходить у налаштування<br>2. Обирає "Видалити акаунт"<br>3. Підтверджує дію<br>4. Видаляється акаунт</td></tr>
+</tbody></table>
+</div>
+<h3 id="Створення-проєкту"><a class="header" href="#Створення-проєкту">Створення проєкту</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>CreateProject</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Створення проєкту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач авторизований</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Створено новий проєкт</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Некоректно введені дані — <code>InvalidDataException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач натискає "Створити проєкт"<br>2. Заповнює необхідні поля<br>3. Підтверджує дію<br>4. Перевіряється коректність введених даних<br>5. Якщо все коректно, створюється проєкт</td></tr>
+</tbody></table>
+</div>
+<h3 id="Редагування-проєкту"><a class="header" href="#Редагування-проєкту">Редагування проєкту</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>EditProject</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Редагування проєкту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має дозвіл на редагування</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Оновлена інформація про проєкт</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває проєкт<br>2. Вносить зміни<br>3. Натискає "Зберегти"<br>4. Перевіряється коректність введених даних<br>5. Якщо все коректно, зберігаються зміни</td></tr>
+</tbody></table>
+</div>
+<h3 id="Видалення-проєкту"><a class="header" href="#Видалення-проєкту">Видалення проєкту</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>DeleteProject</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Видалення проєкту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має права на видалення</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Проєкт видалено</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває проєкт<br>2. Натискає "Видалити"<br>3. Підтверджує дію<br>4. Видаляється проєкт</td></tr>
+</tbody></table>
+</div>
+<h3 id="Додавання-учасників"><a class="header" href="#Додавання-учасників">Додавання учасників</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>AddMembers</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Додавання учасників у проєкт</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Адміністратор, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має права на додавання</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Додані нові учасники</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code><br>- Користувач уже в команді — <code>UserAlreadyInTeamException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Адміністратор відкриває налаштування команди<br>2. Додає нових учасників, вводячи їхню пошту або ID<br>3. Перевіряється коректність введених даних<br>4. Якщо все коректно, додаються учасники</td></tr>
+</tbody></table>
+</div>
+<h3 id="Редагування-дозволів-учасників"><a class="header" href="#Редагування-дозволів-учасників">Редагування дозволів учасників</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>EditMemberPermissions</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Редагування дозволів учасників</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Адміністратор, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має права адміністратора</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Оновлені дозволи учасників</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Адміністратор відкриває список учасників<br>2. Змінює права доступу для конкретного користувача<br>3. Перевіряється коректність введених даних<br>4. Якщо все коректно, зберігаються зміни</td></tr>
+</tbody></table>
+</div>
+<h3 id="Видалення-учасників"><a class="header" href="#Видалення-учасників">Видалення учасників</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>RemoveMembers</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Видалення учасників із проєкту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Адміністратор, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має права на видалення</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Учасника видалено з проєкту</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Адміністратор відкриває список учасників<br>2. Обирає учасників для видалення<br>3. Підтверджує дію<br>4. Видаляються учасники</td></tr>
+</tbody></table>
+</div>
+<h3 id="Створення-завдання"><a class="header" href="#Створення-завдання">Створення завдання</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>CreateTask</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Створення завдання</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має права на створення завдань у проєкті</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Створено нове завдання</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Некоректно введені дані — <code>InvalidDataException</code><br>- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває проєкт<br>2. Натискає "Створити завдання"<br>3. Вводить назву, опис, дедлайн, виконавців<br>4. Підтверджує дію<br>5. Перевіряється коректність введених даних<br>6. Якщо все коректно, створюється завдання</td></tr>
+</tbody></table>
+</div>
+<h3 id="Редагування-завдання"><a class="header" href="#Редагування-завдання">Редагування завдання</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>EditTask</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Редагування завдання</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має дозвіл на редагування завдання</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Оновлене завдання</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває завдання<br>2. Вносить зміни (назва, опис, дедлайн, виконавці)<br>3. Натискає "Зберегти"<br>4. Перевіряється коректність введених даних<br>5. Якщо все коректно, зберігаються зміни</td></tr>
+</tbody></table>
+</div>
+<h3 id="Видалення-завдання"><a class="header" href="#Видалення-завдання">Видалення завдання</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>DeleteTask</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Видалення завдання</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має дозвіл на видалення завдання</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Завдання видалено</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває завдання<br>2. Натискає "Видалити"<br>3. Підтверджує дію<br>4. Видаляється завдання</td></tr>
+</tbody></table>
+</div>
+<h2 id="Короткий-огляд-продукту"><a class="header" href="#Короткий-огляд-продукту">Короткий огляд продукту</a></h2>
+<h2 id="Система-управління-проєктами-СУП"><a class="header" href="#Система-управління-проєктами-СУП">Система управління проєктами (СУП)</a></h2>
+<p>Система управління проєктами – це веб-платформа, розроблена для покращення координації командної роботи та оптимізації процесів управління проєктами. Вона допомагає компаніям ефективно планувати, контролювати та аналізувати виконання завдань, забезпечуючи прозорість робочих процесів.</p>
+<h3 id="Основна-мета-системи"><a class="header" href="#Основна-мета-системи">Основна мета системи</a></h3>
+<ul>
+<li>Автоматизація процесів управління проєктами.</li>
+<li>Мінімізація ризиків невчасного виконання завдань.</li>
+<li>Швидкий обмін інформацією між учасниками команди.</li>
+</ul>
+<p>Система підтримує як традиційні підходи до управління проєктами, так і сучасні гнучкі методології (Agile, Scrum).</p>
+<p>В основі роботи системи лежить інтерактивна платформа, що дозволяє:</p>
+<ul>
+<li>Створювати проєкти.</li>
+<li>Призначати відповідальних осіб.</li>
+<li>Встановлювати дедлайни.</li>
+<li>Розподіляти ресурси.</li>
+<li>Відстежувати статус виконання завдань.</li>
+</ul>
+<h3 id="Інтеграції"><a class="header" href="#Інтеграції">Інтеграції</a></h3>
+<p>Система інтегрується з популярними сервісами для командної роботи:</p>
+<ul>
+<li>Google Calendar</li>
+<li>Slack</li>
+<li>Microsoft Teams</li>
+<li>Git (GitHub, GitLab, Bitbucket)</li>
+</ul>
+<p>Це робить її універсальним рішенням для різних галузей бізнесу.</p>
+<h3 id="Гнучкість-та-доступність"><a class="header" href="#Гнучкість-та-доступність">Гнучкість та доступність</a></h3>
+<p>Завдяки налаштуванню ролей та рівнів доступу, система підходить як для малих стартапів, так і для великих корпорацій. Користувачі отримують персоналізовані панелі з необхідними інструментами.</p>
+<p>Система доступна у веб-версії та мобільному додатку, що дозволяє користувачам залишатися на зв’язку та оперативно реагувати на зміни.</p>
+<h2 id="Функціональність"><a class="header" href="#Функціональність">Функціональність</a></h2>
+<h3 id="Управління-проєктами"><a class="header" href="#Управління-проєктами">Управління проєктами</a></h3>
+<ul>
+<li>Створення, редагування, архівування проєктів</li>
+<li>Визначення цілей, дедлайнів і відповідальних осіб</li>
+<li>Створення та відстеження етапів виконання</li>
+</ul>
+<h3 id="Управління-завданнями"><a class="header" href="#Управління-завданнями">Управління завданнями</a></h3>
+<ul>
+<li>Додавання та редагування завдань</li>
+<li>Призначення виконавців і встановлення дедлайнів</li>
+<li>Відстеження статусу завдань (To Do, In Progress, Done)</li>
+<li>Візуалізація завдань у Kanban-дошці та списках</li>
+</ul>
+<h3 id="Календар-та-розклад"><a class="header" href="#Календар-та-розклад">Календар та розклад</a></h3>
+<ul>
+<li>Інтерактивний календар для перегляду дедлайнів</li>
+<li>Групування завдань за тижнями/місяцями</li>
+<li>Синхронізація з Google Calendar</li>
+</ul>
+<h3 id="Сповіщення-та-комунікація"><a class="header" href="#Сповіщення-та-комунікація">Сповіщення та комунікація</a></h3>
+<ul>
+<li>Автоматичні сповіщення про зміни у проєкті</li>
+<li>Вбудований чат для обговорення завдань</li>
+<li>Історія змін і коментарі</li>
+</ul>
+<h3 id="Аналітика-та-звітність"><a class="header" href="#Аналітика-та-звітність">Аналітика та звітність</a></h3>
+<ul>
+<li>Генерація детальних звітів щодо виконаних завдань</li>
+<li>Аналіз ефективності роботи команди</li>
+<li>Діаграми прогресу та використання ресурсів</li>
+</ul>
+<h3 id="Інтеграції-1"><a class="header" href="#Інтеграції-1">Інтеграції</a></h3>
+<ul>
+<li>Підключення до систем контролю версій (Git, GitHub, GitLab)</li>
+<li>Інтеграція з месенджерами (Slack, Microsoft Teams, Telegram)</li>
+<li>API для взаємодії з іншими сервісами</li>
+</ul>
+<p>Система дозволяє працювати як у веб-версії, так і через мобільний додаток. Завдяки автоматизованим процесам та гнучким налаштуванням, вона допомагає компаніям зменшити затрати часу на управління проєктами та підвищити продуктивність команди.</p>
+<h2 id="Практичність"><a class="header" href="#Практичність">Практичність</a></h2>
+<ul>
+<li>Інтуїтивно зрозумілий інтерфейс — зручна навігація, простий дизайн, що не перевантажений зайвими елементами.</li>
+<li>Гнучка система налаштувань — можливість персоналізації інтерфейсу під потреби користувача.</li>
+<li>Мультимовна підтримка — доступність для користувачів різних країн.</li>
+<li>Кросплатформеність — коректна робота на Windows, macOS, Linux, а також у мобільних версіях (iOS, Android).</li>
+<li>Автоматичне збереження — запобігання втраті важливих змін при раптовому відключенні.</li>
+<li>Візуалізація даних — діаграми Ганта, канбан-дошки, графіки продуктивності та інші інструменти для зручного відстеження прогресу.</li>
+<li>Гарячі клавіші та швидкий доступ до основних функцій для підвищення ефективності.</li>
+<li>Імпорт та експорт даних — можливість інтеграції з іншими сервісами та збереження копій даних у зручному форматі.</li>
+</ul>
+<h2 id="Надійність"><a class="header" href="#Надійність">Надійність</a></h2>
+<ul>
+<li>Двофакторна аутентифікація (2FA) для захисту облікових записів.</li>
+<li>Розмежування прав доступу — чіткий поділ ролей між адміністраторами, менеджерами та учасниками проєкту.</li>
+<li>Система шифрування для захисту конфіденційної інформації та безпечного обміну даними.</li>
+<li>Захист від DDoS-атак та інших кіберзагроз для стабільної роботи системи.</li>
+<li>Автоматичне резервне копіювання для збереження та відновлення даних у разі збоїв або втрати доступу.</li>
+<li>Моніторинг активності — виявлення підозрілої поведінки та сповіщення адміністратора.</li>
+<li>Журнал дій користувачів для прозорості та відстеження внесених змін.</li>
+</ul>
+<h2 id="Продуктивність"><a class="header" href="#Продуктивність">Продуктивність</a></h2>
+<ul>
+<li>Оптимізована швидкість роботи — мінімальний час відгуку системи.</li>
+<li>Підтримка багатопоточності — можливість одночасної роботи великої кількості користувачів без втрати продуктивності.</li>
+<li>Хмарні технології — інтеграція з Google Drive, OneDrive, Dropbox для збереження великих обсягів даних.</li>
+<li>Оптимізація використання ресурсів — економне споживання процесорної потужності та пам’яті.</li>
+<li>Кешування часто використовуваних даних для прискорення завантаження та роботи інтерфейсу.</li>
+<li>Автоматичне оновлення інформації в реальному часі без необхідності ручного оновлення сторінки.</li>
+</ul>
+<h2 id="Експлуатаційна-придатність"><a class="header" href="#Експлуатаційна-придатність">Експлуатаційна придатність</a></h2>
+<ul>
+<li>Цілодобова технічна підтримка — швидке реагування на запити користувачів.</li>
+<li>Оновлення та виправлення багів — регулярні оновлення для поліпшення продуктивності та безпеки.</li>
+<li>Зворотний зв’язок із користувачами — можливість залишати пропозиції та отримувати персональні рекомендації.</li>
+<li>Висока стійкість до навантажень — стабільна робота навіть за великої кількості користувачів.</li>
+<li>Доступність на різних пристроях — підтримка мобільних додатків та веб-версії.</li>
+<li>Автоматична діагностика системи — перевірка справності всіх модулів та виявлення можливих проблем.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Розроблення-функціональних-вимог-до-системи"><a class="header" href="#Розроблення-функціональних-вимог-до-системи">Розроблення функціональних вимог до системи</a></h1>
+<h2 id="Модель-прецедентів"><a class="header" href="#Модель-прецедентів">Модель прецедентів</a></h2>
+<h3 id="Загальна-схема"><a class="header" href="#Загальна-схема">Загальна схема</a></h3>
+<p><img src="docs/images_use_cases/general-use-case-diagram.drawio.png" alt="general-use-case-diagram.png" /></p>
+<h3 id="Користувач"><a class="header" href="#Користувач">Користувач</a></h3>
+<p><img src="docs/images_use_cases/user-use-case-diagram.drawio.png" alt="user-use-case-diagram.png" /></p>
+<h3 id="Адміністратор"><a class="header" href="#Адміністратор">Адміністратор</a></h3>
+<p><img src="docs/images_use_cases/admin-use-case-diagram.drawio.png" alt="admin-use-case-diagram.png" /></p>
+<h2 id="Сценарії-використання"><a class="header" href="#Сценарії-використання">Сценарії використання</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><code>CreateAccount</code></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Створення акаунту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач не має акаунту в системі</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left"><div style="width:500px">Створено новий акаунт</div></td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Обов’язкові поля не заповнені — <code>NullReferenceException</code><br>- Акаунт вже існує — <code>UserAlreadyExistsException</code><br>- Пароль не відповідає вимогам — <code>NotStrongPasswordException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває форму реєстрації<br>2. Вводить необхідні дані<br>3. Натискає "Зареєструватися"<br>4. Перевіряється коректність введених даних<br>5. Якщо всі перевірки пройдені, створюється акаунт</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/ZLBDIW9H5Dxx51TRjn8t6c4Bjn953s1wCs6QaPah6Sp2qSnD9CGmGX3X6zYWP9EZht3E6tNk6KOdA4ZG-tFFztC-JyLHTLjrRuoS2o-mmJwiqCC13Y64EOxTdA0FrvHvMnBmZ04i8DAbNEGBl6Va6eU2bYNwJD6djmSCSBf7Kls6i2jwVHGGmvAExpXYmXW3GSjSRtQ8L-8OQ4iGiH8jCM6s495M7gPqcH7KhbC0Jl892_-uC4iQ8yarpDsK_ut0H00X1WIVeA-TQR1Msl1JHA2OdZqsJG8XNIxe6nFZAB7CsqJEj9GKThjrhSI1R1GBnG9V7rqUw_vNHFk5JpZcTj7ZA8PfKALTwQ6eTGtZJ5v9MveDMUqrP4UrBJDJSE58-yImPRrvL-sr7UNyLbIprBcoBRDrMdUSMyjk_YoIPfCDyo7DP4ODXxfvykaBpZiauvz2_rdaFe1eV_L1tMzrjDcm_vwaVUGuoeo27XmlbTNH_bVFKLQddAjG7pJ2tm00" 
+       width="700px" 
+       alt="CreateAccount Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><code>EditAccount</code></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Редагування інформації акаунту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач авторизований</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left"><div style="width:500px">Оновлена інформація про акаунт</div></td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Некоректний формат даних — <code>InvalidDataException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач переходить у налаштування акаунту<br>2. Вносить зміни<br>3. Натискає "Зберегти"<br>4. Перевіряється коректність введених даних<br>5. Якщо все коректно, оновлюється інформація про акаунт</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VLBDJi9W4BptARxWsHFX0iPmq8EFKQ5H4Ym4g_7G0pyY7emaXa1YeiOtg1LZKsXzXTatShxlWv9uiCtNR7TdPsQthLy6RY-ukcWx8PwHIn-936Ge8yI8P18wYfV1r4nOLNZ3b_HvniYnH4BmWvAHGeO8ApRTRzkPoMIg6AIy8oOpNIg8dWZ8PR2Xm3VMCcSgAG0lR1fgGwPzfafOuCEgurDNIXPg7Y7UhNSMruZ2FtOHorpwCfMPLYEEnbBaffIoAMDvO8t4Y9bSyj2CZ1N3o8PMpky4dkgrpiu3jUSrAkLAsQGFJW_rJ0bIhEHH9ffIRSORqVyT5HRL0hglJlnhjzrg7hc1UtpJyBf1g-ERikStZSXsX5UzACI6TcTVBqjkpGXhIyyaVlYQAqIxZTSSm_Flz-rqQqwTilmHVW40" 
+       width="700px" 
+       alt="EditAccount Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><code>DeleteAccount</code></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Видалення акаунту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач авторизований</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Акаунт видалено</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Користувач не підтвердив видалення — <code>CancelledOperationException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач переходить у налаштування<br>2. Обирає "Видалити акаунт"<br>3. Підтверджує дію<br>4. Видаляється акаунт</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VP51IiDW48NtESLGrwvADwr8GLnxXfZ-Q24c8KPmaKNQe7KXBOX4SA5uWrXI2Qtj6TxSoETV4dSc15w6xysRV_xXTUB6oSsLxwHunKupr3hHgUPOejHPwWWVomoix0lUiTACtnrsg50JVXJD1LkKsD3qqDXPsUgYzRtXatH6ubawU4ADoZhO0RLGhlcMcjCqxVobQO6AnDAcLlZId7wM2ftleI1CZCJZYyj43epNw_QwjdnqVYmsPOsDpdN6jeNen0wSC-UU7LxwBNee9sxW6TytexF8n6uo3eFJMyz4ly9I9XZPBCV-fVZOhmehVADCctdRS-c2SrAqPneqnd_s74O3PyWWNiWF" 
+       width="700px" 
+       alt="DeleteAccount Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>CreateProject</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Створення проєкту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач авторизований</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Створено новий проєкт</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Некоректно введені дані — <code>InvalidDataException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач натискає "Створити проєкт"<br>2. Заповнює необхідні поля<br>3. Підтверджує дію<br>4. Перевіряється коректність введених даних<br>5. Якщо все коректно, створюється проєкт</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VL7FIW9n4BxlKmnsxYHUDC937NgCJPSIR1Nx5HtsO8fv2OKGXI32DzWM3T7KL_ZcZVgShHzqIL36-VvyC_Ehthgmu-vkca62L-oqYvK-Qa_xo93gC0c47-DKh2mBtWZq3ZIiMKsaW3d_PpzY8e8zonsMM6klu7KpfDYpdM6h8-gm9ME73nte50isfsBuHiTUytw0p7sfNP8-jKybMrCTvIJxIJ3FvwRZ5zB4oqssH4P-LySwuMRFv8q5QvlNHZn4iqb86CGeBFZTqd4WBDEypEFYbekaqxYwTd8KrKh5Kj7Q9vUdWXUiQBlXSaFRXXTQsIbJVMB2hEofnt8HtuVDHlqiTE7vGorgkqOhDZYAwnRokuA_BMtz-7ykN0cC--_xjTgLe4fhFlGt" 
+       width="700px" 
+       alt="CreateProject Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>EditProject</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Редагування проєкту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має дозвіл на редагування</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Оновлена інформація про проєкт</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває проєкт<br>2. Вносить зміни<br>3. Натискає "Зберегти"<br>4. Перевіряється коректність введених даних<br>5. Якщо все коректно, зберігаються зміни</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VL5DIiDG4Dxd58-wTbMwQKKgw44qVMX0az94S955awBTI0jIKX14l45C3OROr2jySoFdJPAA6nC8apVVV3zlXdvmFWbkRwwj4C_OqHG5HHJJ31bIceUMuaSm0odx2a-Ku0EbWGfefV3DFplaV1Z_mb0nNuI2sHuLFh7bkGh57l32ix6HGoai7QpnZfofScnCfrD3vHFYhNR6pItIi2LvRGOoIcXAIrePDSOj5Kg98wPGSJkgZMJyvXmWDsReNd6PrcKjvtg1LXFdyYfG1zhkTNjTEJwwE3QP2gRzeWND3QLguitO_mChhFjxwA4wiMtj-wVQTVJexCxMuy3nNEbhToGgJOOsDYNOCD6YJV3dpWJxxugyyS0QCZNlyWS0" 
+       width="700px" 
+       alt="EditProject Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>DeleteProject</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Видалення проєкту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має права на видалення</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Проєкт видалено</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває проєкт<br>2. Натискає "Видалити"<br>3. Підтверджує дію<br>4. Видаляється проєкт</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VP11IiDW48NtESLGrwvADur81Js8fZyQqAGql-0Y2qt1RgI5KY888juWb4H2glKARsxa_5FyLs8M8VFcotlC6sNsV6flRww372_OyJrQVk22PzYWudaUa3pAXFev9AouH8tEeGgj2TyoxD28M7ZiLLQ5SqEdK0yhjAXHOOlMRNeUVNEE8ctGY56D3vx93oALl0X9gIIrXgRnvPMb0nCD-eE-oaSNnwI-7RQyu3c-k2I9RDq94lie5iz3ZnxIIHIPB3irIMp6PtUHcTWuJNHlal4-XGATSxplkq23JrIvF__t2bxoMcAUX5d-KO6-_YqrdOJ1I6Ab_Hy0" 
+       width="700px" 
+       alt="DeleteProject Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>AddMembers</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Додавання учасників у проєкт</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Адміністратор, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має права на додавання</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Додані нові учасники</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code><br>- Користувач уже в команді — <code>UserAlreadyInTeamException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Адміністратор відкриває налаштування команди<br>2. Додає нових учасників, вводячи їхню пошту або ID<br>3. Перевіряється коректність введених даних<br>4. Якщо все коректно, додаються учасники</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/ZLB1Ql9W4BpdAHR-wz-JU36bADY3z_O1RFne1OsIfD123b6nxK6q5D5ZwHlO4E53JVeAks_K-H8CjQSAmcPsTcTcaxeVjBtWlj-pGdxbX0-oubHMCfAnHBoHCMSIXHRXbpFjlAmHlu6Oy0uapJ68I-AKDxn7-OBPYG61fB8Wtd761_E82LrkM09DZfCP-5gc91Dv1ZO2f7a7ZVW_eHKRhYpGqoHhcMBldFYBiqACiFoJCserRI8h5mZvWxM9mLkZ7HvLttah4R0O8IDiN69-1bvXqxGWEovlCClL0IRufxb5OxeeYoZk853aTM_l0lgdd6gbMidXyviBNCcauBtCuHmh2S6qCOo8Jr1Orqhg6JKSH_b-KxbTrRbySDGmw0xS7_rhNtcDdgVQdSUMUwNQ_LEISZk5bT_tdPS9Ju_BsYvEzOStFnZQLXqA-52-0G00" 
+       width="700px" 
+       alt="AddMembers Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>EditMemberPermissions</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Редагування дозволів учасників</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Адміністратор, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має права адміністратора</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Оновлені дозволи учасників</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Адміністратор відкриває список учасників<br>2. Змінює права доступу для конкретного користувача<br>3. Перевіряється коректність введених даних<br>4. Якщо все коректно, зберігаються зміни</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/XLB1Ji904BttAoRnx8bm0MCmqG_Hib4IBOJMn4CFfOrw8SKO0aVZ7zHIObDf-OMPF_BjBfQZ93IxCs_Uc_VQWHzSJuF7Xtidv3SkU2ShhcKbCuabuanYRYGA7SBF8Flcs2D-1x3W2g2ISm2N93FUSubdmnL98g-SuLAZNm6RjvFhWqYA6Tvh5Kr0O6kCR89Yegy_iY2kG5SRdIsMgN7RS6FAMlemW7ajrtUCHiYVjiDRtd4M_Wb_W08qdCDV90jPOdOEd5KnhKhYrlwSm9kZME0F6_9CE6RsQDsGDmuKJKUtTm6TABVRwNPC_Upc70bfvp2HOZLmwdnAisqcBv1OzrheALsuhlBzI-MDrF3goLMJO3JsJ5zvGwj2T0pmIpj1Y1jmfKSNtpPPBjiW_dsbuqdV6K03Ny0l" 
+       width="700px" 
+       alt="EditMemberPermissions Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>RemoveMembers</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Видалення учасників із проєкту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Адміністратор, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має права на видалення</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Учасника видалено з проєкту</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Адміністратор відкриває список учасників<br>2. Обирає учасників для видалення<br>3. Підтверджує дію<br>4. Видаляються учасники</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/XP6_IiDG5CRtFCK1PwVIfH6fe0-YwKK3cfGcWaE6D0LTf14fTLDyWrWQ2MbJN-4xR-IN2ysWGpE4UtD_v_kJEupYoqbyVtVh97Z16bjTej6bJZNJ58Lcs6cQECB7agvT3WIl1DUe2LLO4Lo8Jl63YkyTQj6PFg7Wfk5vJNRLJRxZYrXgP_vZGjMDvaBHYii26vGyRJJl13vQQyr8b9gI-QRAWdECFNU9M4w2C3OoyQzlOZaoNh_Nxzdl9rUd3D-wqMPETxPjerSiF6EKHwgy3JhqMCuypqJHkGbyCxfuyCmuziF0dfjWP5qSkqlmsRPdhX9R54dte_OzDATVfizayZ_5KRbxaOEN48vTPqXhtjal" 
+       width="700px" 
+       alt="RemoveMembers Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>CreateTask</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Створення завдання</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має права на створення завдань у проєкті</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Створено нове завдання</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Некоректно введені дані — <code>InvalidDataException</code><br>- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває проєкт<br>2. Натискає "Створити завдання"<br>3. Вводить назву, опис, дедлайн, виконавців<br>4. Підтверджує дію<br>5. Перевіряється коректність введених даних<br>6. Якщо все коректно, створюється завдання</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VPBFIiD04CRlUOgXNkkfzDA8LAW77oEcYmPgMjee7d9eMhGNQK5A1K6aRn2MrZ-fQLzXvetyTeDH4ImqPEVxpSptiMaE8gyVNLvqd9WVUIj3VfD4HZ9cpQbCOeVmiunhNnl4zxBW5MS6jT2SU8V3bjSeZahi2TB8JEFCGXLUugoB7KOXVkKKXHMUEUSogtolC1m4S797K5EmMiPLGdc7Sb8bo6lyDz3UESTPmqy67JJOMxZKvS1duzckNyiGNIyoXYMK5Z9roI7BnRmiqcFm1wTnsMoQKDEWXpAJkN45RaPcdvKGd7F8IM5OcqNMO8w9DsGpsjV2KTYD5FM3i_E8zfHVhzLhjdnmUeZiDiP6fZ8n8qaIz9aBIKqcUMYKw3wTX5TU9sYtlCWxllPLBmgwuG_voFVLOD1IOQ3QltKLjWiJz1Mol1miBWF-kIBNiVo_tqgtvpfDBC17zGa0" 
+       width="700px" 
+       alt="CreateTask Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>EditTask</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Редагування завдання</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має дозвіл на редагування завдання</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Оновлене завдання</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває завдання<br>2. Вносить зміни (назва, опис, дедлайн, виконавці)<br>3. Натискає "Зберегти"<br>4. Перевіряється коректність введених даних<br>5. Якщо все коректно, зберігаються зміни</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VLB1Jl906BptAJRybzz4JuGB68E9FeYMZP9e8L0J3pr0YN8na1XI4XDZV8DQQ4IWy0hplP6pMoWtsxJPtPbllfclhNVzgux_S7_d17Z3HdfOI5z26I11BCF0KRmifsQNLOLNYJ37qb0jQQAmvMQ3b8VXWOQCUdtgXVAYy8qrwp8ir7--O-vPUwnOjZKjkPeZvRCYzeEC-uJwI-A6dSYpH4U5zZlRXgQC16EWX2c-aD95Yfb1IgHQSe3FF16HDU9Wh_2nOoSIIK_6CZ4koHihqvEG3OECS3yFaF1EhKc6a2VZDywNkIslvMlLQTxS-kgVTYlbIjaUdrwVSHOsoaf6CZIIQZUM0MAJIwRLWdgYpbrNTxiNsclgnkMZgzj-i-LPN7kDl8lQfTYdbWWpIesA38TfrnpB_VFZjjerfqvn_WM_" 
+       width="700px" 
+       alt="EditTask Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>DeleteTask</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Видалення завдання</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має дозвіл на видалення завдання</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Завдання видалено</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває завдання<br>2. Натискає "Видалити"<br>3. Підтверджує дію<br>4. Видаляється завдання</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VP71IiDG54Jt_OfBNRigtJGY5VH3D7reG9FIFC555jg2tKW3fKGGHFo3HqWrfCPlcFj7tdUBMObPXPd337VUEBNdCtjxSztBy89llaVD3ppd1KeuNcOzaa-PG7z7X3KNgD1uLA4DuHCEfOWEBLhEE_HLxBbFHADW7slKokrGUwVVeMy-LQGIMqckyC4BdrnnmQk0b8eJQsWMNLvPEZ3XS30Sg7nqSKoQss37ArwYvOAaijOp73zAnFEeGm_f90nDcfwQE3AJixlGJ6sKnEgRUB9laK8LChpl1y4MNt1Pjy7l6PppHdgUXCd_s47vVvTDfa5lBBto13y0" 
+       width="700px" 
+       alt="DeleteTask Diagram">
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Проєктування-бази-даних"><a class="header" href="#Проєктування-бази-даних">Проєктування бази даних</a></h1>
+<h3 id="Модель-бізнес-обєктів"><a class="header" href="#Модель-бізнес-обєктів">Модель бізнес-об'єктів</a></h3>
+<div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/ZPPTRvim58Rl_IjGTZ6fKYf6FeQghYeVH8tKPLLBfUqAiM2jR60YOrJjty_4StGuiI5KQi3lOv_ZbsER-rRaN7HrHJuwNmoNa-pIRVhZndbjAJSIX39HYhyAkBrL_DsTys6pyHUk2-Nhif34xlLhc3mh8bWXefF_M5vJoQN9zzH2qJelgt7aaBVjUyEBXxnzEoU9JcS-lphoP1WTDkjmi0sDVvAcN7pYpM-w5wD6QWPwkLgjGs-326pdElGJRu4X-L11EyrKGTizBm-YRDWasxmpoZDpSA8XvQtkGuRPO0LdW7KO5OgJVgTv-sVCR0L0f_tGbHUKiSrHl8fM4IImnoO46sm5ZmioAtBH3nW7QMBXA2lC51vDTErun8CoCvkUfwpvyXUZr8AI7j9llhydm1tGXko02fm_5E244Qzc21lXbA00Pm2KoIgAchgcR7pLQWRMqdBjU-4I4RYS_CzHiWam96HUsKLatectXb_6xXicv2ye1qlqigRIr_hmlxW0IJIZ3DHT24eSQJXLh8Baa8OI0khqwW-Rd1TZRqqHmrFBInRBQA2V7riRIGqHl0EO6CCw0oXHa397zI1WRDmAHWFIT2LNNSt6BD48z2Jq-ci8d9dY-l8FCTWL8_IpppoxPBY65vIRCA80RPvw8Z09t0xZGWa40kqNdJCAVIpPn8a3KNJs15wOU6RGk2F4SU36iQN3_dXhwK8G39VjK2BcOSsipQVdv358jzzsBm_RfnUpFSVlnzcdcJClvixClRw-cfq-XMuSVVeRiJu9oO2ztOZfBLgIUYCwVQ-OXhHeUgdrY2M4Mg9O7DGO4ascJo3tb1LTNVq3" 
+       width="700px">
+</div>
+<h3 id="er-модель"><a class="header" href="#er-модель">ER-модель</a></h3>
+<div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/hPHHRzCm4CVV_IbEUPc4rY-0nZJ6Wa0hfLIfnDjauXCnY-t8vwYgDhuxPzSL96kMXzA7zkh_p-V_dI-veI1zw4qhBg3St065VOkYqGgXrhxcc1wrxQIN1bfjCUmx1ET3uuH06tJOGx4bz0L8WXZ0am1uenMyXTNsossvWQkhzVtrDQyk5lpLCsEbGTQhydl5wkfhnUXoUGdRrUTlspAnQAHkPvXE4ksSLvyaDIzHHdx_zRZsxXVM8TdCyPnJtjYUi9a0XLHxtGNjR2PuqUqi-eTXme_tbt3QKINfCTc9mN_tagxrGSaGTzszhyhOKwj6Aqo5dYRoTeSslLuGW2JIFotY2svOxWTd3CUfuXpF5isDcJszvr7qSrJjRE039meDsY05QRhScCaXkdNIgrH1YiwvjFdcZjlNziRcxiNmdCD_HFTpFNDUeV-Nc1xZWwEbjdcW1qi7eoVkSiqdfYbXkKxu5C37NS2xmGSssCeuyjJeZaQYI2-Yv-V5mZqTdtPENBYTfM8WHgjHoKEi8BWXa4SrCZkl0_9-aJEESpIInQ6Mv-GeYeIECsVnW6Ont_5Hot-pEEelGot_CXQ5ro6kKDj2tA1LyPt_1m00" 
+       width="700px" 
+       alt="ER_Model">
+</div>
+<h3 id="Реляційна-схема"><a class="header" href="#Реляційна-схема">Реляційна схема</a></h3>
+<div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="docs/design-images/rel-schema.png"
+       width="700px" 
+       alt="Relational_schema">
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Реалізація-інформаційного-та-програмного-забезпечення"><a class="header" href="#Реалізація-інформаційного-та-програмного-забезпечення">Реалізація інформаційного та програмного забезпечення</a></h1>
+<h3 id="sql-скрипт-для-створення-на-початкового-наповнення-бази-даних"><a class="header" href="#sql-скрипт-для-створення-на-початкового-наповнення-бази-даних">SQL-скрипт для створення на початкового наповнення бази даних:</a></h3>
+<pre><code class="language-sql">-- -----------------------------------------------------
+-- Set custom settings
+-- -----------------------------------------------------
+SET
+  @old_unique_checks = IFNULL(@@unique_checks, 1),
+  unique_checks = 0,
+  @old_foreign_key_checks = IFNULL(@@foreign_key_checks, 1),
+  foreign_key_checks = 0,
+  @old_sql_mode = IFNULL(@@sql_mode, ''),
+  sql_mode = 'TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema taskmanagementsystem
+-- -----------------------------------------------------
+DROP DATABASE IF EXISTS `taskmanagementsystem`;
+CREATE DATABASE IF NOT EXISTS `taskmanagementsystem` DEFAULT CHARACTER SET utf8;
+USE `taskmanagementsystem`;
+
+-- -----------------------------------------------------
+-- Tables
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `password_hash` TEXT NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `username_unique` (`username` ASC),
+  UNIQUE INDEX `email_unique` (`email` ASC)
+) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS `project`;
+CREATE TABLE IF NOT EXISTS `project` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` TEXT NOT NULL,
+  `description` TEXT NULL,
+  `owner_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_project_user_idx` (`owner_id` ASC),
+  CONSTRAINT `fk_project_user`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS `board`;
+CREATE TABLE IF NOT EXISTS `board` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` TEXT NOT NULL,
+  `project_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_board_project_idx` (`project_id` ASC),
+  CONSTRAINT `fk_board_project`
+    FOREIGN KEY (`project_id`)
+    REFERENCES `project` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS `column`;
+CREATE TABLE IF NOT EXISTS `column` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` TEXT NOT NULL,
+  `board_id` INT NOT NULL,
+  `order` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_column_board_idx` (`board_id` ASC),
+  CONSTRAINT `fk_column_board`
+    FOREIGN KEY (`board_id`)
+    REFERENCES `board` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS `task`;
+CREATE TABLE IF NOT EXISTS `task` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` TEXT NOT NULL,
+  `description` TEXT NULL,
+  `start_date` DATE NULL,
+  `end_date` DATE NULL,
+  `status` TEXT NOT NULL,
+  `project_id` INT NOT NULL,
+  `assignee_id` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_task_project_idx` (`project_id` ASC),
+  INDEX `fk_task_user_idx` (`assignee_id` ASC),
+  CONSTRAINT `fk_task_project`
+    FOREIGN KEY (`project_id`)
+    REFERENCES `project` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_task_user`
+    FOREIGN KEY (`assignee_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS `taskcolumnlink`;
+CREATE TABLE IF NOT EXISTS `taskcolumnlink` (
+  `task_id` INT NOT NULL,
+  `column_id` INT NOT NULL,
+  PRIMARY KEY (`task_id`, `column_id`),
+  INDEX `fk_taskcolumnlink_task_idx` (`task_id` ASC),
+  INDEX `fk_taskcolumnlink_column_idx` (`column_id` ASC),
+  CONSTRAINT `fk_taskcolumnlink_task`
+    FOREIGN KEY (`task_id`)
+    REFERENCES `task` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_taskcolumnlink_column`
+    FOREIGN KEY (`column_id`)
+    REFERENCES `column` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE IF NOT EXISTS `comment` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `task_id` INT NOT NULL,
+  `author_id` INT NOT NULL,
+  `content` TEXT NOT NULL,
+  `timestamp` DATETIME NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_comment_task_idx` (`task_id` ASC),
+  INDEX `fk_comment_user_idx` (`author_id` ASC),
+  CONSTRAINT `fk_comment_task`
+    FOREIGN KEY (`task_id`)
+    REFERENCES `task` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_comment_user`
+    FOREIGN KEY (`author_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- -----------------------------------------------------
+-- Restore original settings
+-- -----------------------------------------------------
+SET 
+  sql_mode = @old_sql_mode,
+  foreign_key_checks = @old_foreign_key_checks,
+  unique_checks = @old_unique_checks;
+</code></pre>
+<h3 id="sql-скрипт-для-заповнення"><a class="header" href="#sql-скрипт-для-заповнення">SQL-скрипт для заповнення</a></h3>
+<pre><code class="language-sql">INSERT INTO `user` (id, username, email, passwordHash)
+VALUES 
+  (1, 'geyorgiy', 'geyorgi228@example.com', 'passwordHash'),
+  (2, 'anna', 'anna@example.com', 'passwordHash2'),
+  (3, 'mark', 'mark@example.com', 'passwordHash3');
+
+INSERT INTO `project` (id, title, description, owner_id)
+VALUES 
+  (1, 'task management project', 'a project for managing tasks', 1),
+  (2, 'website redesign', 'redesign company website', 2),
+  (3, 'mobile app development', 'develop new mobile app', 3);
+
+INSERT INTO `board` (id, title, project_id)
+VALUES 
+  (1, 'main board', 1),
+  (2, 'redesign board', 2),
+  (3, 'app dev board', 3);
+
+INSERT INTO `column` (id, title, board_id, `order`)
+VALUES 
+  (1, 'to do', 1, 1),
+  (2, 'in progress', 1, 2),
+  (3, 'done', 1, 3),
+  (4, 'backlog', 2, 1),
+  (5, 'design', 2, 2),
+  (6, 'testing', 3, 1);
+
+INSERT INTO `task` (id, title, description, start_date, end_date, status, project_id, assignee_id)
+VALUES 
+  (1, 'set up project', 'initial setup of the project structure', '2025-05-20', NULL, 'to do', 1, 1),
+  (2, 'create wireframes', 'design wireframes for homepage', '2025-05-21', '2025-05-25', 'in progress', 2, 2),
+  (3, 'implement login', 'build login functionality', '2025-05-22', NULL, 'to do', 3, 3);
+
+INSERT INTO `taskcolumnlink` (task_id, column_id)
+VALUES 
+  (1, 1),
+  (2, 5),
+  (3, 6);
+
+INSERT INTO `comment` (id, task_id, author_id, content, timestamp)
+VALUES 
+  (1, 1, 1, 'do this', NOW()),
+  (2, 2, 2, 'wireframes need review', NOW()),
+  (3, 3, 3, 'login should be secure', NOW());
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Тестування-працездатності-системи"><a class="header" href="#Тестування-працездатності-системи">Тестування працездатності системи</a></h1>
+<p>Тестування здійснюється через застосунок <a href="https://github.com/unxwn/stantsiya-sykhiv/blob/main/src/scripts/README.md">StantsiyaSykhivApi</a> за допомогою документації OpenAPI.</p>
+<h2 id="Головна-сторінка"><a class="header" href="#Головна-сторінка">Головна сторінка</a></h2>
+<p><img src="docs/./test-assets/main-page.png" alt="Головна сторінка" /></p>
+<h2 id="Автентифікація"><a class="header" href="#Автентифікація">Автентифікація</a></h2>
+<p><img src="docs/./test-assets/auth0.png" alt="Автентифікація" />
+<img src="docs/./test-assets/auth1.png" alt="Реєстрація1" />
+<img src="docs/./test-assets/auth2.png" alt="Реєстрація2" />
+<img src="docs/./test-assets/auth3.png" alt="Вхід1" />
+<img src="docs/./test-assets/auth4.png" alt="Вхід2" /></p>
+<h2 id="Отримати-всі-дошки"><a class="header" href="#Отримати-всі-дошки">Отримати всі дошки</a></h2>
+<p><img src="docs/./test-assets/get-all-boards.png" alt="Отримати всі дошки" /></p>
+<h2 id="Отримати-дошку-пo-id"><a class="header" href="#Отримати-дошку-пo-id">Отримати дошку пo id</a></h2>
+<p><img src="docs/./test-assets/get-one-board.png" alt="Отримати всі дошки" /></p>
+<h2 id="Створити-нову-дошку"><a class="header" href="#Створити-нову-дошку">Створити нову дошку</a></h2>
+<p><img src="docs/./test-assets/post-board.png" alt="Створити дошку" /></p>
+<h2 id="Змінити-існуючу-дошку"><a class="header" href="#Змінити-існуючу-дошку">Змінити існуючу дошку</a></h2>
+<p><img src="docs/./test-assets/post-board.png" alt="Змінити дошку" /></p>
+<h2 id="Видалити-дошку"><a class="header" href="#Видалити-дошку">Видалити дошку</a></h2>
+<p><img src="docs/./test-assets/delete-board.png" alt="Видалити дошку" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Висновки-1"><a class="header" href="#Висновки-1">Висновки</a></h1>
+<p>У процесі розробки системи Stantsiya Sykhiv (SS) було досягнуто основної мети — створення гнучкої, масштабованої та зручної у використанні платформи для управління проєктами з інтеграцією систем контролю версій. Завдяки використанню сучасних технологій, таких як RESTful API, реляційна база даних та модульна архітектура, вдалося реалізувати інструмент, який не лише задовольняє потреби командної роботи, а й забезпечує легку адаптацію до вимог різних команд розробників.</p>
+<p>Проєкт демонструє високий рівень технічної реалізації та потенціал для подальшого розвитку: інтеграція з Git, підтримка масштабування та можливість розширення функціоналу роблять його конкурентоспроможним рішенням на фоні існуючих аналогів.</p>
+<p>Stantsiya Sykhiv підтверджує актуальність поєднання простоти використання з потужним технічним підґрунтям, відкриваючи нові можливості для покращення командної взаємодії, автоматизації процесів та контролю змін. У перспективі система має потенціал для впровадження в реальні робочі середовища та подальшого вдосконалення через зворотний зв'язок від користувачів.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

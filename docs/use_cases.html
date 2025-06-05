@@ -1,0 +1,385 @@
+<!DOCTYPE HTML>
+<html lang="uk" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Розроблення функціональних вимог до системи - Станція Сихів</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Станція Сихів</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="Розроблення-функціональних-вимог-до-системи"><a class="header" href="#Розроблення-функціональних-вимог-до-системи">Розроблення функціональних вимог до системи</a></h1>
+<h2 id="Модель-прецедентів"><a class="header" href="#Модель-прецедентів">Модель прецедентів</a></h2>
+<h3 id="Загальна-схема"><a class="header" href="#Загальна-схема">Загальна схема</a></h3>
+<p><img src="images_use_cases/general-use-case-diagram.drawio.png" alt="general-use-case-diagram.png" /></p>
+<h3 id="Користувач"><a class="header" href="#Користувач">Користувач</a></h3>
+<p><img src="images_use_cases/user-use-case-diagram.drawio.png" alt="user-use-case-diagram.png" /></p>
+<h3 id="Адміністратор"><a class="header" href="#Адміністратор">Адміністратор</a></h3>
+<p><img src="images_use_cases/admin-use-case-diagram.drawio.png" alt="admin-use-case-diagram.png" /></p>
+<h2 id="Сценарії-використання"><a class="header" href="#Сценарії-використання">Сценарії використання</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><code>CreateAccount</code></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Створення акаунту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач не має акаунту в системі</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left"><div style="width:500px">Створено новий акаунт</div></td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Обов’язкові поля не заповнені — <code>NullReferenceException</code><br>- Акаунт вже існує — <code>UserAlreadyExistsException</code><br>- Пароль не відповідає вимогам — <code>NotStrongPasswordException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває форму реєстрації<br>2. Вводить необхідні дані<br>3. Натискає "Зареєструватися"<br>4. Перевіряється коректність введених даних<br>5. Якщо всі перевірки пройдені, створюється акаунт</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/ZLBDIW9H5Dxx51TRjn8t6c4Bjn953s1wCs6QaPah6Sp2qSnD9CGmGX3X6zYWP9EZht3E6tNk6KOdA4ZG-tFFztC-JyLHTLjrRuoS2o-mmJwiqCC13Y64EOxTdA0FrvHvMnBmZ04i8DAbNEGBl6Va6eU2bYNwJD6djmSCSBf7Kls6i2jwVHGGmvAExpXYmXW3GSjSRtQ8L-8OQ4iGiH8jCM6s495M7gPqcH7KhbC0Jl892_-uC4iQ8yarpDsK_ut0H00X1WIVeA-TQR1Msl1JHA2OdZqsJG8XNIxe6nFZAB7CsqJEj9GKThjrhSI1R1GBnG9V7rqUw_vNHFk5JpZcTj7ZA8PfKALTwQ6eTGtZJ5v9MveDMUqrP4UrBJDJSE58-yImPRrvL-sr7UNyLbIprBcoBRDrMdUSMyjk_YoIPfCDyo7DP4ODXxfvykaBpZiauvz2_rdaFe1eV_L1tMzrjDcm_vwaVUGuoeo27XmlbTNH_bVFKLQddAjG7pJ2tm00" 
+       width="700px" 
+       alt="CreateAccount Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><code>EditAccount</code></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Редагування інформації акаунту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач авторизований</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left"><div style="width:500px">Оновлена інформація про акаунт</div></td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Некоректний формат даних — <code>InvalidDataException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач переходить у налаштування акаунту<br>2. Вносить зміни<br>3. Натискає "Зберегти"<br>4. Перевіряється коректність введених даних<br>5. Якщо все коректно, оновлюється інформація про акаунт</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VLBDJi9W4BptARxWsHFX0iPmq8EFKQ5H4Ym4g_7G0pyY7emaXa1YeiOtg1LZKsXzXTatShxlWv9uiCtNR7TdPsQthLy6RY-ukcWx8PwHIn-936Ge8yI8P18wYfV1r4nOLNZ3b_HvniYnH4BmWvAHGeO8ApRTRzkPoMIg6AIy8oOpNIg8dWZ8PR2Xm3VMCcSgAG0lR1fgGwPzfafOuCEgurDNIXPg7Y7UhNSMruZ2FtOHorpwCfMPLYEEnbBaffIoAMDvO8t4Y9bSyj2CZ1N3o8PMpky4dkgrpiu3jUSrAkLAsQGFJW_rJ0bIhEHH9ffIRSORqVyT5HRL0hglJlnhjzrg7hc1UtpJyBf1g-ERikStZSXsX5UzACI6TcTVBqjkpGXhIyyaVlYQAqIxZTSSm_Flz-rqQqwTilmHVW40" 
+       width="700px" 
+       alt="EditAccount Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><code>DeleteAccount</code></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Видалення акаунту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач авторизований</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Акаунт видалено</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Користувач не підтвердив видалення — <code>CancelledOperationException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач переходить у налаштування<br>2. Обирає "Видалити акаунт"<br>3. Підтверджує дію<br>4. Видаляється акаунт</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VP51IiDW48NtESLGrwvADwr8GLnxXfZ-Q24c8KPmaKNQe7KXBOX4SA5uWrXI2Qtj6TxSoETV4dSc15w6xysRV_xXTUB6oSsLxwHunKupr3hHgUPOejHPwWWVomoix0lUiTACtnrsg50JVXJD1LkKsD3qqDXPsUgYzRtXatH6ubawU4ADoZhO0RLGhlcMcjCqxVobQO6AnDAcLlZId7wM2ftleI1CZCJZYyj43epNw_QwjdnqVYmsPOsDpdN6jeNen0wSC-UU7LxwBNee9sxW6TytexF8n6uo3eFJMyz4ly9I9XZPBCV-fVZOhmehVADCctdRS-c2SrAqPneqnd_s74O3PyWWNiWF" 
+       width="700px" 
+       alt="DeleteAccount Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>CreateProject</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Створення проєкту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач авторизований</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Створено новий проєкт</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Некоректно введені дані — <code>InvalidDataException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач натискає "Створити проєкт"<br>2. Заповнює необхідні поля<br>3. Підтверджує дію<br>4. Перевіряється коректність введених даних<br>5. Якщо все коректно, створюється проєкт</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VL7FIW9n4BxlKmnsxYHUDC937NgCJPSIR1Nx5HtsO8fv2OKGXI32DzWM3T7KL_ZcZVgShHzqIL36-VvyC_Ehthgmu-vkca62L-oqYvK-Qa_xo93gC0c47-DKh2mBtWZq3ZIiMKsaW3d_PpzY8e8zonsMM6klu7KpfDYpdM6h8-gm9ME73nte50isfsBuHiTUytw0p7sfNP8-jKybMrCTvIJxIJ3FvwRZ5zB4oqssH4P-LySwuMRFv8q5QvlNHZn4iqb86CGeBFZTqd4WBDEypEFYbekaqxYwTd8KrKh5Kj7Q9vUdWXUiQBlXSaFRXXTQsIbJVMB2hEofnt8HtuVDHlqiTE7vGorgkqOhDZYAwnRokuA_BMtz-7ykN0cC--_xjTgLe4fhFlGt" 
+       width="700px" 
+       alt="CreateProject Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>EditProject</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Редагування проєкту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має дозвіл на редагування</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Оновлена інформація про проєкт</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває проєкт<br>2. Вносить зміни<br>3. Натискає "Зберегти"<br>4. Перевіряється коректність введених даних<br>5. Якщо все коректно, зберігаються зміни</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VL5DIiDG4Dxd58-wTbMwQKKgw44qVMX0az94S955awBTI0jIKX14l45C3OROr2jySoFdJPAA6nC8apVVV3zlXdvmFWbkRwwj4C_OqHG5HHJJ31bIceUMuaSm0odx2a-Ku0EbWGfefV3DFplaV1Z_mb0nNuI2sHuLFh7bkGh57l32ix6HGoai7QpnZfofScnCfrD3vHFYhNR6pItIi2LvRGOoIcXAIrePDSOj5Kg98wPGSJkgZMJyvXmWDsReNd6PrcKjvtg1LXFdyYfG1zhkTNjTEJwwE3QP2gRzeWND3QLguitO_mChhFjxwA4wiMtj-wVQTVJexCxMuy3nNEbhToGgJOOsDYNOCD6YJV3dpWJxxugyyS0QCZNlyWS0" 
+       width="700px" 
+       alt="EditProject Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>DeleteProject</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Видалення проєкту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має права на видалення</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Проєкт видалено</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває проєкт<br>2. Натискає "Видалити"<br>3. Підтверджує дію<br>4. Видаляється проєкт</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VP11IiDW48NtESLGrwvADur81Js8fZyQqAGql-0Y2qt1RgI5KY888juWb4H2glKARsxa_5FyLs8M8VFcotlC6sNsV6flRww372_OyJrQVk22PzYWudaUa3pAXFev9AouH8tEeGgj2TyoxD28M7ZiLLQ5SqEdK0yhjAXHOOlMRNeUVNEE8ctGY56D3vx93oALl0X9gIIrXgRnvPMb0nCD-eE-oaSNnwI-7RQyu3c-k2I9RDq94lie5iz3ZnxIIHIPB3irIMp6PtUHcTWuJNHlal4-XGATSxplkq23JrIvF__t2bxoMcAUX5d-KO6-_YqrdOJ1I6Ab_Hy0" 
+       width="700px" 
+       alt="DeleteProject Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>AddMembers</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Додавання учасників у проєкт</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Адміністратор, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має права на додавання</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Додані нові учасники</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code><br>- Користувач уже в команді — <code>UserAlreadyInTeamException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Адміністратор відкриває налаштування команди<br>2. Додає нових учасників, вводячи їхню пошту або ID<br>3. Перевіряється коректність введених даних<br>4. Якщо все коректно, додаються учасники</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/ZLB1Ql9W4BpdAHR-wz-JU36bADY3z_O1RFne1OsIfD123b6nxK6q5D5ZwHlO4E53JVeAks_K-H8CjQSAmcPsTcTcaxeVjBtWlj-pGdxbX0-oubHMCfAnHBoHCMSIXHRXbpFjlAmHlu6Oy0uapJ68I-AKDxn7-OBPYG61fB8Wtd761_E82LrkM09DZfCP-5gc91Dv1ZO2f7a7ZVW_eHKRhYpGqoHhcMBldFYBiqACiFoJCserRI8h5mZvWxM9mLkZ7HvLttah4R0O8IDiN69-1bvXqxGWEovlCClL0IRufxb5OxeeYoZk853aTM_l0lgdd6gbMidXyviBNCcauBtCuHmh2S6qCOo8Jr1Orqhg6JKSH_b-KxbTrRbySDGmw0xS7_rhNtcDdgVQdSUMUwNQ_LEISZk5bT_tdPS9Ju_BsYvEzOStFnZQLXqA-52-0G00" 
+       width="700px" 
+       alt="AddMembers Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>EditMemberPermissions</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Редагування дозволів учасників</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Адміністратор, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має права адміністратора</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Оновлені дозволи учасників</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Адміністратор відкриває список учасників<br>2. Змінює права доступу для конкретного користувача<br>3. Перевіряється коректність введених даних<br>4. Якщо все коректно, зберігаються зміни</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/XLB1Ji904BttAoRnx8bm0MCmqG_Hib4IBOJMn4CFfOrw8SKO0aVZ7zHIObDf-OMPF_BjBfQZ93IxCs_Uc_VQWHzSJuF7Xtidv3SkU2ShhcKbCuabuanYRYGA7SBF8Flcs2D-1x3W2g2ISm2N93FUSubdmnL98g-SuLAZNm6RjvFhWqYA6Tvh5Kr0O6kCR89Yegy_iY2kG5SRdIsMgN7RS6FAMlemW7ajrtUCHiYVjiDRtd4M_Wb_W08qdCDV90jPOdOEd5KnhKhYrlwSm9kZME0F6_9CE6RsQDsGDmuKJKUtTm6TABVRwNPC_Upc70bfvp2HOZLmwdnAisqcBv1OzrheALsuhlBzI-MDrF3goLMJO3JsJ5zvGwj2T0pmIpj1Y1jmfKSNtpPPBjiW_dsbuqdV6K03Ny0l" 
+       width="700px" 
+       alt="EditMemberPermissions Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>RemoveMembers</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Видалення учасників із проєкту</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Адміністратор, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має права на видалення</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Учасника видалено з проєкту</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Адміністратор відкриває список учасників<br>2. Обирає учасників для видалення<br>3. Підтверджує дію<br>4. Видаляються учасники</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/XP6_IiDG5CRtFCK1PwVIfH6fe0-YwKK3cfGcWaE6D0LTf14fTLDyWrWQ2MbJN-4xR-IN2ysWGpE4UtD_v_kJEupYoqbyVtVh97Z16bjTej6bJZNJ58Lcs6cQECB7agvT3WIl1DUe2LLO4Lo8Jl63YkyTQj6PFg7Wfk5vJNRLJRxZYrXgP_vZGjMDvaBHYii26vGyRJJl13vQQyr8b9gI-QRAWdECFNU9M4w2C3OoyQzlOZaoNh_Nxzdl9rUd3D-wqMPETxPjerSiF6EKHwgy3JhqMCuypqJHkGbyCxfuyCmuziF0dfjWP5qSkqlmsRPdhX9R54dte_OzDATVfizayZ_5KRbxaOEN48vTPqXhtjal" 
+       width="700px" 
+       alt="RemoveMembers Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>CreateTask</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Створення завдання</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має права на створення завдань у проєкті</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Створено нове завдання</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Некоректно введені дані — <code>InvalidDataException</code><br>- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває проєкт<br>2. Натискає "Створити завдання"<br>3. Вводить назву, опис, дедлайн, виконавців<br>4. Підтверджує дію<br>5. Перевіряється коректність введених даних<br>6. Якщо все коректно, створюється завдання</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VPBFIiD04CRlUOgXNkkfzDA8LAW77oEcYmPgMjee7d9eMhGNQK5A1K6aRn2MrZ-fQLzXvetyTeDH4ImqPEVxpSptiMaE8gyVNLvqd9WVUIj3VfD4HZ9cpQbCOeVmiunhNnl4zxBW5MS6jT2SU8V3bjSeZahi2TB8JEFCGXLUugoB7KOXVkKKXHMUEUSogtolC1m4S797K5EmMiPLGdc7Sb8bo6lyDz3UESTPmqy67JJOMxZKvS1duzckNyiGNIyoXYMK5Z9roI7BnRmiqcFm1wTnsMoQKDEWXpAJkN45RaPcdvKGd7F8IM5OcqNMO8w9DsGpsjV2KTYD5FM3i_E8zfHVhzLhjdnmUeZiDiP6fZ8n8qaIz9aBIKqcUMYKw3wTX5TU9sYtlCWxllPLBmgwuG_voFVLOD1IOQ3QltKLjWiJz1Mol1miBWF-kIBNiVo_tqgtvpfDBC17zGa0" 
+       width="700px" 
+       alt="CreateTask Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>EditTask</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Редагування завдання</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має дозвіл на редагування завдання</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Оновлене завдання</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває завдання<br>2. Вносить зміни (назва, опис, дедлайн, виконавці)<br>3. Натискає "Зберегти"<br>4. Перевіряється коректність введених даних<br>5. Якщо все коректно, зберігаються зміни</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VLB1Jl906BptAJRybzz4JuGB68E9FeYMZP9e8L0J3pr0YN8na1XI4XDZV8DQQ4IWy0hplP6pMoWtsxJPtPbllfclhNVzgux_S7_d17Z3HdfOI5z26I11BCF0KRmifsQNLOLNYJ37qb0jQQAmvMQ3b8VXWOQCUdtgXVAYy8qrwp8ir7--O-vPUwnOjZKjkPeZvRCYzeEC-uJwI-A6dSYpH4U5zZlRXgQC16EWX2c-aD95Yfb1IgHQSe3FF16HDU9Wh_2nOoSIIK_6CZ4koHihqvEG3OECS3yFaF1EhKc6a2VZDywNkIslvMlLQTxS-kgVTYlbIjaUdrwVSHOsoaf6CZIIQZUM0MAJIwRLWdgYpbrNTxiNsclgnkMZgzj-i-LPN7kDl8lQfTYdbWWpIesA38TfrnpB_VFZjjerfqvn_WM_" 
+       width="700px" 
+       alt="EditTask Diagram">
+</div>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">ID:</th><th style="text-align: left"><div style="width:500px"><code>DeleteTask</code></div></th></tr></thead><tbody>
+<tr><td style="text-align: left">Назва:</td><td style="text-align: left">Видалення завдання</td></tr>
+<tr><td style="text-align: left">Учасники:</td><td style="text-align: left">Користувач, система</td></tr>
+<tr><td style="text-align: left">Передумови:</td><td style="text-align: left">Користувач має дозвіл на видалення завдання</td></tr>
+<tr><td style="text-align: left">Результат:</td><td style="text-align: left">Завдання видалено</td></tr>
+<tr><td style="text-align: left">Виключні ситуації:</td><td style="text-align: left">- Доступ заборонено — <code>AccessDeniedException</code></td></tr>
+<tr><td style="text-align: left">Основний сценарій:</td><td style="text-align: left">1. Користувач відкриває завдання<br>2. Натискає "Видалити"<br>3. Підтверджує дію<br>4. Видаляється завдання</td></tr>
+</tbody></table>
+</div><div style="text-align: center; margin: 5px 0px 20px;">
+  <img src="https://www.plantuml.com/plantuml/png/VP71IiDG54Jt_OfBNRigtJGY5VH3D7reG9FIFC555jg2tKW3fKGGHFo3HqWrfCPlcFj7tdUBMObPXPd337VUEBNdCtjxSztBy89llaVD3ppd1KeuNcOzaa-PG7z7X3KNgD1uLA4DuHCEfOWEBLhEE_HLxBbFHADW7slKokrGUwVVeMy-LQGIMqckyC4BdrnnmQk0b8eJQsWMNLvPEZ3XS30Sg7nqSKoQss37ArwYvOAaijOp73zAnFEeGm_f90nDcfwQE3AJixlGJ6sKnEgRUB9laK8LChpl1y4MNt1Pjy7l6PppHdgUXCd_s47vVvTDfa5lBBto13y0" 
+       width="700px" 
+       alt="DeleteTask Diagram">
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../docs/stakeholders-needs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../docs/design.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../docs/stakeholders-needs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../docs/design.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

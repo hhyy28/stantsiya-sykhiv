@@ -1,0 +1,17 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "# ✅ TaskBoard API   Чистий Web API на .NET 8 для управління користувачами, проєктами, дошками, колонками, задачами та коментарями — без Identity, DTO чи AutoMapper.   Побудовано з використанням EF Core, JWT, BCrypt та OpenAPI. [*Вигляд застосунку*](https://github.com/unxwn/stantsiya-sykhiv/tree/main/test)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.1"
+  }
+}
