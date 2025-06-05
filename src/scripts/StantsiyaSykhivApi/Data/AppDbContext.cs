@@ -39,7 +39,7 @@ namespace StantsiyaSykhivApi.Data
                 new Project { Id = 1, Title = "API Dev", Description = "Create backend API", OwnerId = 1 },
                 new Project { Id = 2, Title = "Frontend UI", Description = "Build UI", OwnerId = 2 }
             );
-
+            
             mb.Entity<Board>().HasData(
                 new Board { Id = 1, Title = "Development", ProjectId = 1 },
                 new Board { Id = 2, Title = "UI Design", ProjectId = 2 }

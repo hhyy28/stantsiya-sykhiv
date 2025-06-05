@@ -1,12 +1,11 @@
 {
   "Version": 1,
-  "Hash": "Czoa1D6l5mX4UiDoGky/1yEdQ+Jb+UW5Uv6i6IgEXFg=",
+  "Hash": "xwLUYrjtyeIQcqZXD6xwUlvZbc7flihjvX1rz3ctcmU=",
   "Source": "StantsiyaSykhivApi",
   "BasePath": "_content/StantsiyaSykhivApi",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": []
 }
